@@ -1,10 +1,21 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
 import Notebooks from '../components/Notebooks'
 
-const NotebooksView = () => (
-  <main>
-    <Notebooks />
-  </main>
+const NotebooksView = ({notebooks}) => (
+  <Notebooks
+    notebooks={notebooks}
+  />
 )
 
-export default NotebooksView
+const mapStateToProps = state => ({
+  notebooks: state.notebooks
+})
+
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NotebooksView)

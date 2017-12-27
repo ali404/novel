@@ -1,5 +1,6 @@
-export const addNotebook = (name, type) => ({
+export const addNotebook = (title, id, dateCreated) => ({
   type: 'ADD_NOTEBOOK',
-  dateCreated: new Date(),
-  notebookType: type
+  dateCreated: dateCreated,
+  title: title,
+  id: id
 })
