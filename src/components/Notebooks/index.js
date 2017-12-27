@@ -1,16 +1,19 @@
 import React from 'react'
+import _ from 'lodash'
 
 import Notebook from '../Notebook'
 import './style.css'
 
 const Notebooks = ({notebooks}) => {
   let notebooksAsList = []
-  if(!notebooks.length) {
+  if(_.isEmpty(notebooks)) {
     notebooksAsList = "You don't have any notebooks"
     notebooks = []
   }
-  notebooks.forEach(notebook => {
-    console.log(notebook)
+
+  for(let id in notebooks) {
+    let notebook = notebooks[id]
+
     notebooksAsList.push((
       <li key={notebook.id}>
         <Notebook
@@ -20,7 +23,7 @@ const Notebooks = ({notebooks}) => {
         />
       </li>
     ))
-  })
+  }
 
   return (
     <ul className="notebook-viewer--list">{notebooksAsList}</ul>

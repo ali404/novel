@@ -1,3 +1,8 @@
 .notebook-viewer--list {
   padding-right: 0;
+  color: var(--color-800);
+}
+
+.notebook-viewer--list > li {
+  color: var(--color-800);
 }

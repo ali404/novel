@@ -1,7 +1,8 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Notebook = ({id, title, dateCreated}) => (
-  <div>{title}</div>
+  <Link to={"/notebooks/" + id}>{title}</Link>
 )
 
 export default Notebook
