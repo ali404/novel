@@ -1,0 +1,31 @@
+{
+  "name": "novel",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/main.js",
+  "devDependencies": {
+    "react-scripts": "1.0.17"
+  },
+  "dependencies": {
+    "draft-js": "^0.10.4",
+    "draft-js-buttons": "^2.0.1",
+    "draft-js-plugins-editor": "^2.0.3",
+    "draft-js-static-toolbar-plugin": "^2.0.1",
+    "draft-js-undo-plugin": "^2.0.1",
+    "electron": "^1.7.10",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
