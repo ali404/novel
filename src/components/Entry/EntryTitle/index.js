@@ -1,19 +1,19 @@
 import React from 'react'
+import './style.css'
 
 const EntryTitle = ({title, onChange}) => {
   return (
-    <div>
-      <input
-        type="text"
-        value={title}
-        placeholder="Title"
-        onChange={ev => {
-          if(ev.target.value !== title) {
-            onChange(ev.target.value)
-          }
-        }}
-      />
-    </div>
+    <input
+      type="text"
+      value={title}
+      placeholder="Title"
+      className="entry-title"
+      onChange={ev => {
+        if(ev.target.value !== title) {
+          onChange(ev.target.value)
+        }
+      }}
+    />
   )
 }
 

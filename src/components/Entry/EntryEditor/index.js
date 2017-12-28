@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 //import _ from 'lodash'
 
+import './style.css'
+
 import Editor from 'draft-js-plugins-editor'
 //import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
 

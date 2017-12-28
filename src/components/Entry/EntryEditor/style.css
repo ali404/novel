@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Droid Serif";
+  src: url("./DroidSerif-Regular.ttf");
+}
+
+.public-DraftStyleDefault-block {
+  margin-bottom: 20px;
+  font-family: "Droid Serif";
+  color: var(--grey-900);
+  font-size: 18px;
+}
