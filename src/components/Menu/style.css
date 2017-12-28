@@ -1,7 +1,7 @@
 .menu {
   height: 100%;
-  width: 300px;
-  background-color: var(--grey-50);
+  width: 280px;
+  background-color: var(--grey-200-transparent);
   border-right: 1px solid var(--grey-200);
   color: var(--grey-50);
   padding: 80px 12px;
@@ -11,5 +11,5 @@
 .menu-logo {
   width: 180px;
   margin-right: auto;
-  margin-left: 40px;
+  margin-left: 30px;
 }
