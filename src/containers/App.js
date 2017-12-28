@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, withRouter} from 'react-router'
+import {Route, withRouter, Switch} from 'react-router'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
@@ -10,11 +10,13 @@ import EntryView from './EntryView'
 
 import './app.style.css'
 
-const AppView = ({actions, entries}) => (
+const AppView = ({actions, entries, location}) => (
   <div className="app">
     <Menu actions={actions} entries={entries}/>
     <div className="contents">
-      <Route path="/entry/:id" component={EntryView} />
+      <Switch location={location}>
+        <Route exact path="/:id" component={EntryView} />
+      </Switch>
     </div>
   </div>
 )

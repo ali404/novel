@@ -6,17 +6,27 @@ export default function entries(state = {}, action) {
         [action.id]: {
           id: action.id,
           title: "",
-          data: "",
+          state: "",
           dateCreated: action.dateCreated
         }
       }
-    case 'UPDATE_ENTRY':
+    case 'UPDATE_ENTRY_TITLE':
       return {
         ...state,
         [action.id]: {
           id: action.id,
           title: action.title,
-          data: action.data,
+          state: state[action.id].state,
+          dateCreated: state[action.id].dateCreated
+        }
+      }
+    case 'UPDATE_ENTRY_STATE':
+      return {
+        ...state,
+        [action.id]: {
+          id: action.id,
+          title: state[action.id].title,
+          state: action.state,
           dateCreated: state[action.id].dateCreated
         }
       }

@@ -1,10 +1,30 @@
 import React from 'react'
-import {withRouter} from 'react-router'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-const EntryView = ({match}) => {
+import Entry from '../components/Entry'
+
+import * as actions from '../actions'
+
+const EntryView = ({match, entries, actions}) => {
   return (
-    <div>{match.params.id}</div>
+    <Entry
+      entry={entries[match.params.id]}
+      actions={actions}
+      id={match.params.id}
+    />
   )
 }
 
-export default EntryView
+const mapStateToProps = state => ({
+  entries: state.entries
+})
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EntryView)

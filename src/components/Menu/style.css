@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
 .menu {
   height: 100%;
   width: 280px;
@@ -29,10 +31,13 @@
   color: black;
   padding: 16px;
   position: relative;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 
 .menu-item h4 {
   font-size: 16px;
+  color: var(--grey-800);
   margin: 0;
 }
 
@@ -41,9 +46,10 @@
   top: 15px;
   right: 12px;
   font-size: 18px;
+  color: var(--grey-800);
 }
 
-.menu-item--add:hover {
+.menu-item:hover {
   cursor: pointer;
   background-color: var(--grey-200);
 }
@@ -60,8 +66,11 @@
 .menu-item--link__title {
   margin: 0;
   margin-bottom: 8px;
+  color: var(--grey-800);
 }
 
 .menu-item--link__date {
   margin: 0;
+  color: var(--grey-500);
+  font-weight: 400;
 }

@@ -1,9 +1,8 @@
 import React from 'react'
-import {Link, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './style.css'
 import svg from '../../logo.svg'
 
-import NotebookViewer from '../../containers/Notebooks'
 import MdAdd from 'react-icons/lib/md/add'
 
 import uuidv4 from 'uuid/v4'
@@ -12,11 +11,11 @@ const Menu = ({actions, entries}) => {
   let entryList = []
   for(let id in entries) {
     let entry = entries[id]
-    let title = entry.title == "" ? "Untitled" : entry.title
+    let title = entry.title === "" ? "Untitled" : entry.title
     entryList.push((
       <Link
         className="menu-item menu-item--link"
-        to={"/entry/" + entry.id}
+        to={"/" + entry.id}
         key={entry.id}
       >
         <p className="menu-item--link__title">
@@ -31,7 +30,7 @@ const Menu = ({actions, entries}) => {
 
   return (
     <div className="menu">
-      <img src={svg} className="menu-logo" />
+      <img src={svg} className="menu-logo" alt="novel logo" />
       <ul className="menu-items">
         <li
           className="menu-item menu-item--add"

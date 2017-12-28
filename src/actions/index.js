@@ -11,9 +11,14 @@ export const addEntry = (id, dateCreated) => ({
   id: id,
 })
 
-export const updateEntry = (id, title, data) => ({
-  type: 'UPDATE_ENTRY',
+export const updateEntryTitle = (id, title) => ({
+  type: 'UPDATE_ENTRY_TITLE',
   id: id,
-  title: title,
-  data: data
+  title: title
+})
+
+export const updateEntryState = (id, state) => ({
+  type: 'UPDATE_ENTRY_STATE',
+  id: id,
+  state: state
 })
