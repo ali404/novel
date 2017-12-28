@@ -3,18 +3,23 @@ export default function entries(state = {}, action) {
     case 'ADD_ENTRY':
       return {
         ...state,
-        [action.notebookId]: {
-          ...state[action.notebookId],
-          [action.entryId]: {
-            id: action.entryId,
-            title: action.title,
-            dateCreated: action.dateCreated,
-            data: "" //TODO: update this
-          }
+        [action.id]: {
+          id: action.id,
+          title: "",
+          data: "",
+          dateCreated: action.dateCreated
         }
       }
     case 'UPDATE_ENTRY':
-      return state
+      return {
+        ...state,
+        [action.id]: {
+          id: action.id,
+          title: action.title,
+          data: action.data,
+          dateCreated: state[action.id].dateCreated
+        }
+      }
     default:
       return state
   }

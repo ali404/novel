@@ -1,26 +1,30 @@
 import React from 'react'
-import {Route} from 'react-router'
-import Menu from '../components/Menu'
+import {Route, withRouter} from 'react-router'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-import NotebooksView from './Notebooks'
-import NotebookViewer from './NotebookViewer'
-import ChallengesView from './Challenges'
-import AddNotebook from './AddNotebook'
-import AddEntry from './AddEntry'
+import * as actions from '../actions'
+
+import Menu from '../components/Menu'
+import EntryView from './EntryView'
 
 import './app.style.css'
 
-const AppView = ({children}) => (
+const AppView = ({actions, entries}) => (
   <div className="app">
-    <Menu />
+    <Menu actions={actions} entries={entries}/>
     <div className="contents">
-      <Route exact path="/notebooks" component={NotebooksView} />
-      <Route exact path="/notebooks" component={AddNotebook} />
-      <Route exact path="/notebooks/:id" component={NotebookViewer} />
-      <Route exact path="/notebooks/:id" component={AddEntry} />
-      <Route path="/challenges" component={ChallengesView} />
+      <Route path="/entry/:id" component={EntryView} />
     </div>
   </div>
 )
 
-export default AppView
+const menuState = state => ({
+  entries: state.entries
+})
+
+const menuDispatch = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+})
+
+export default withRouter(connect(menuState, menuDispatch)(AppView))

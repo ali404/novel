@@ -3,7 +3,6 @@ import notebooks from './notebooks'
 import entries from './entries'
 
 const rootReducer = combineReducers({
-  notebooks,
   entries
 })
 
