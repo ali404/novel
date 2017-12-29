@@ -1,31 +1,72 @@
-export const addNotebook = (title, id, dateCreated) => ({
-  type: 'ADD_NOTEBOOK',
-  dateCreated: dateCreated,
-  title: title,
-  id: id
-})
+import {
+  saveEntryToFilesystem,
+  updateTitle,
+  saveState,
+  loadEntries,
+  loadEntry
+} from '../utils'
 
-export const addEntry = (id, dateCreated) => ({
-  type: 'ADD_ENTRY',
-  dateCreated: dateCreated,
-  id: id,
-})
+export const addEntry = (id, dateCreated) => {
+  saveEntryToFilesystem(id, dateCreated)
 
-export const updateEntryTitle = (id, title) => ({
-  type: 'UPDATE_ENTRY_TITLE',
-  id: id,
-  title: title
-})
+  return {
+    type: 'ADD_ENTRY',
+    dateCreated: dateCreated,
+    id: id,
+  }
+}
 
-export const updateEntryState = (id, state) => ({
-  type: 'UPDATE_ENTRY_STATE',
-  id: id,
-  state: state
-})
+export const updateEntryTitle = (id, title) => {
+  updateTitle(id, title)
 
+  return {
+    type: 'UPDATE_ENTRY_TITLE',
+    id: id,
+    title: title
+  }
+}
+
+// update the entry state only locally
+export const updateEntryState = (id, state) => {
+  return {
+    type: 'UPDATE_ENTRY_STATE',
+    id: id,
+    state: state
+  }
+}
+
+// save the entry state in the file system
 export const saveEntryState = (id) => {
-  return ({
-    type: "SAVE_ENTRY_STATE",
-    id: id
-  })
+  return (dispatch, getState) => {
+    const {entries} = getState()
+    const entry = entries[id]
+
+    saveState(id, entry)
+    dispatch({
+      type: "SAVE_ENTRY_STATE",
+      id: id
+    })
+  }
+}
+
+export const loadEntriesState = () => {
+  return(dispatch, _) => {
+    loadEntries((data) => {
+      dispatch({
+        type: 'LOAD_ENTRIES',
+        entries: data
+      })
+    })
+  }
+}
+
+export const loadEntryState = (id) => {
+  return (dispatch, _) => {
+    loadEntry(id, (data) => {
+      dispatch({
+        type: 'LOAD_ENTRY',
+        entry: data
+      })
+    })
+  }
 }

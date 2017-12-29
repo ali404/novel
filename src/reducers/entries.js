@@ -1,5 +1,10 @@
 export default function entries(state = {}, action) {
   switch(action.type) {
+    case 'LOAD_ENTRY':
+      return {
+        ...state,
+        [action.id]: action.entry
+      }
     case 'ADD_ENTRY':
       return {
         ...state,

@@ -10,11 +10,11 @@ import EntryView from './EntryView'
 
 import './app.style.css'
 
-const AppView = ({actions, entries, location}) => (
+const AppView = ({actions, entries, entryTitles}) => (
   <div className="app">
-    <Menu actions={actions} entries={entries}/>
+    <Menu actions={actions} entries={entryTitles}/>
     <div className="contents">
-      <Switch location={location}>
+      <Switch>
         <Route exact path="/:id" component={EntryView} />
       </Switch>
     </div>
@@ -22,7 +22,8 @@ const AppView = ({actions, entries, location}) => (
 )
 
 const menuState = state => ({
-  entries: state.entries
+  entries: state.entries,
+  entryTitles: state.entryTitles
 })
 
 const menuDispatch = dispatch => ({
