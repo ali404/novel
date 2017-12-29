@@ -10,9 +10,9 @@ import EntryView from './EntryView'
 
 import './app.style.css'
 
-const AppView = ({actions, entries, entryTitles}) => (
+const AppView = ({actions, entries, entryTitles, match}) => (
   <div className="app">
-    <Menu actions={actions} entries={entryTitles}/>
+    <Menu actions={actions} entries={entryTitles} match={match} />
     <div className="contents">
       <Switch>
         <Route exact path="/:id" component={EntryView} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import './style.css'
 import svg from '../../logo.svg'
 
@@ -7,7 +7,8 @@ import MdAdd from 'react-icons/lib/md/add'
 
 import uuidv4 from 'uuid/v4'
 
-const Menu = ({actions, entries}) => {
+const Menu = ({actions, entries, match}) => {
+  console.log(match.params.id)
   let entryList = []
 
   let keysSorted = Object.keys(entries).sort((aKey, bKey) => {
@@ -34,10 +35,11 @@ const Menu = ({actions, entries}) => {
     }
 
     entryList.push((
-      <Link
+      <NavLink
         className="menu-item menu-item--link"
         to={"/" + entry.id}
         key={entry.id}
+        activeClassName="active"
       >
         <p className="menu-item--link__title">
           {title}
@@ -45,7 +47,7 @@ const Menu = ({actions, entries}) => {
         <p className="menu-item--link__date">
           {dateString}
         </p>
-      </Link>
+      </NavLink>
     ))
   }
 

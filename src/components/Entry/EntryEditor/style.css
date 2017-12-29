@@ -9,8 +9,8 @@
 
 .public-DraftStyleDefault-block {
   margin-bottom: 20px;
-  font-family: Georgia, "Droid Serif";
-  color: var(--grey-900);
-  font-size: 18px;
-  line-height: 1.6;
+  font-family: "Gentium Book Basic";
+  color: var(--grey-800);
+  font-size: 20px;
+  line-height: 1.4;
 }

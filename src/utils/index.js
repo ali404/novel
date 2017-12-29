@@ -31,7 +31,9 @@ export const updateTitle = (id, title) => {
   })
 
   storage.get(id, (error, data) => {
-    data[title] = title
+    if(error) throw error
+
+    data.title = title
     storage.set(id, data)
   })
 }
