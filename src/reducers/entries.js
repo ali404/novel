@@ -3,7 +3,7 @@ export default function entries(state = {}, action) {
     case 'LOAD_ENTRY':
       return {
         ...state,
-        [action.id]: action.entry
+        [action.entry.id]: action.entry
       }
     case 'ADD_ENTRY':
       return {

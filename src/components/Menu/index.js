@@ -9,8 +9,19 @@ import uuidv4 from 'uuid/v4'
 
 const Menu = ({actions, entries}) => {
   let entryList = []
-  for(let id in entries) {
-    let entry = entries[id]
+
+  let keysSorted = Object.keys(entries).sort((aKey, bKey) => {
+    let a = entries[aKey]
+    let b = entries[bKey]
+
+    let dateA = typeof a.dateCreated === 'string' ? new Date(a.dateCreated) : a.dateCreated
+    let dateB = typeof b.dateCreated === 'string' ? new Date(b.dateCreated) : b.dateCreated
+
+    return dateA < dateB
+  })
+
+  for(let id in keysSorted) {
+    let entry = entries[keysSorted[id]]
     let title = entry.title === "" ? "Untitled" : entry.title
     let dateString
 

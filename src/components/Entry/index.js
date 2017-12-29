@@ -15,6 +15,16 @@ export default class Entry extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState(this._setState(nextProps))
+  }
+
+  componentWillMount() {
+    if(!this.props.entry) {
+      this.props.actions.loadEntryState(this.props.id)
+    }
+  }
+
   _setState(props) {
     const setEditorState = (editorState) => {
       if(editorState === "") {
@@ -52,6 +62,7 @@ export default class Entry extends Component {
     )
 
     this.setState({title})
+    this.state.throttled_save()
   }
 
   _saveEditorState = (editorState) => {
@@ -67,9 +78,7 @@ export default class Entry extends Component {
     let returned
 
     if(!this.props.entry) {
-      returned = (
-        <div>No entry found with the match: {this.props.id}</div>
-      )
+      returned = null
     }
     else {
       returned = (
