@@ -33,6 +33,7 @@ export default class EntryEditor extends Component {
       <Editor
         editorState={this.state.editorState}
         onChange={this.onChange}
+        className="editor"
       />
     )
   }

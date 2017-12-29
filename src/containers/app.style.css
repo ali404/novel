@@ -39,7 +39,8 @@ body {
 
 .contents {
   flex-grow: 1;
-  background-color: var(--grey-50);
+  background-color: #ffffff;
   padding-top: 120px;
   padding-left: 40px;
+  padding-right: 40px;
 }

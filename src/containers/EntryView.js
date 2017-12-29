@@ -7,12 +7,14 @@ import Entry from '../components/Entry'
 import * as actions from '../actions'
 
 const EntryView = ({match, entries, actions}) => {
-  return (
+  let key = match.params.id
+  return React.cloneElement(
     <Entry
       entry={entries[match.params.id]}
       actions={actions}
       id={match.params.id}
-    />
+    />,
+    {key: key}
   )
 }
 

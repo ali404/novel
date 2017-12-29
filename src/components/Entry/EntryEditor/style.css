@@ -3,9 +3,14 @@
   src: url("./DroidSerif-Regular.ttf");
 }
 
+.DraftEditor-root {
+  max-width: 800px;
+}
+
 .public-DraftStyleDefault-block {
   margin-bottom: 20px;
-  font-family: "Droid Serif";
+  font-family: Georgia, "Droid Serif";
   color: var(--grey-900);
   font-size: 18px;
+  line-height: 1.6;
 }
