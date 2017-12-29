@@ -22,3 +22,10 @@ export const updateEntryState = (id, state) => ({
   id: id,
   state: state
 })
+
+export const saveEntryState = (id) => {
+  return ({
+    type: "SAVE_ENTRY_STATE",
+    id: id
+  })
+}

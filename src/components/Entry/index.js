@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import _ from 'lodash'
 
 import EntryTitle from './EntryTitle'
 import EntryEditor from './EntryEditor'
@@ -27,7 +28,8 @@ export default class Entry extends Component {
     if(props.entry) {
       return {
         title: props.entry.title,
-        initialEditorState: setEditorState(props.entry.state)
+        initialEditorState: setEditorState(props.entry.state),
+        throttled_save: this._returnThrottled()
       }
     }
     else {
@@ -35,8 +37,12 @@ export default class Entry extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState(this._setState(nextProps))
+  _returnThrottled() {
+    return _.debounce(() => {
+      this.props.actions.saveEntryState(
+        this.props.entry.id
+      )
+    }, 1000)
   }
 
   _saveTitle = (title) => {
@@ -53,6 +59,8 @@ export default class Entry extends Component {
       this.props.entry.id,
       convertToRaw(editorState.getCurrentContent())
     )
+
+    this.state.throttled_save()
   }
 
   render() {
