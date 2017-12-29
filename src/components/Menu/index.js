@@ -12,6 +12,16 @@ const Menu = ({actions, entries}) => {
   for(let id in entries) {
     let entry = entries[id]
     let title = entry.title === "" ? "Untitled" : entry.title
+    let dateString
+
+    if(typeof entry.dateCreated === 'string') {
+      dateString = new Date(entry.dateCreated)
+      dateString = dateString.toDateString()
+    }
+    else {
+      dateString = entry.dateCreated.toDateString()
+    }
+
     entryList.push((
       <Link
         className="menu-item menu-item--link"
@@ -22,7 +32,7 @@ const Menu = ({actions, entries}) => {
           {title}
         </p>
         <p className="menu-item--link__date">
-          {entry.dateCreated.toDateString()}
+          {dateString}
         </p>
       </Link>
     ))

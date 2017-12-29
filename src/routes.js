@@ -9,10 +9,14 @@ import App from './containers/App'
 
 import rootReducer from './reducers'
 
+import * as actions from './actions'
+
 const store = createStore(
   rootReducer,
   applyMiddleware(thunk, logger)
 )
+
+store.dispatch(actions.loadEntriesState())
 
 const Routes = (
   <BrowserRouter>
