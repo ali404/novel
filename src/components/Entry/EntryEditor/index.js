@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-//import _ from 'lodash'
+import {RichUtils} from 'draft-js'
 
 import './style.css'
 
@@ -18,6 +18,15 @@ export default class EntryEditor extends Component {
     }
   }
 
+  handleKeyCommand(command, editorState) {
+    const newState = RichUtils.handleKeyCommand(editorState, command)
+    if(newState) {
+      this.onChange(newState)
+      return 'handled'
+    }
+    return 'not-handled'
+  }
+
   onChange = (editorState) => {
     if(this.state.editorState !== editorState) {
       this.setState({
@@ -33,6 +42,7 @@ export default class EntryEditor extends Component {
       <Editor
         editorState={this.state.editorState}
         onChange={this.onChange}
+        handleKeyCommand={this.handleKeyCommand}
         className="editor"
       />
     )
