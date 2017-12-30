@@ -1,6 +1,7 @@
 .menu {
   height: 100%;
-  flex: 0 0 280px;
+  width: 280px;
+  position: fixed;
   background-color: var(--grey-50);
   border-right: 1px solid var(--grey-200);
   color: var(--grey-50);
