@@ -1,0 +1,12 @@
+.entry-title {
+  background-color: transparent;
+  font-family: 'Playfair Display';
+  font-size: 48px;
+  width: 100%;
+  border: none;
+  margin-bottom: 40px;
+}
+
+.entry-title:focus {
+  outline: none;
+}

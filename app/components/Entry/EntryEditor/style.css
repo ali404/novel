@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Droid Serif";
+  src: url("./DroidSerif-Regular.ttf");
+}
+
+.DraftEditor-root {
+  max-width: 800px;
+}
+
+.public-DraftStyleDefault-block {
+  margin-bottom: 20px;
+  font-family: "Gentium Book Basic";
+  color: var(--grey-800);
+  font-size: 20px;
+  line-height: 1.4;
+}

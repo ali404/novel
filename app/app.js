@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { createMemoryHistory } from 'history';
-import routes from './routes';
+
+import App from './containers/App'
+
 import configureStore from './store';
 
 const syncHistoryWithStore = (store, history) => {
@@ -23,7 +25,7 @@ const rootElement = document.querySelector(document.currentScript.getAttribute('
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={routerHistory}>
-      {routes}
+      <App />
     </ConnectedRouter>
   </Provider>,
   rootElement
