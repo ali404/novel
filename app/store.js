@@ -1,7 +1,8 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import { routerMiddleware, routerReducer as routing, push } from 'react-router-redux';
-import persistState from 'redux-localstorage';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
+import { routerMiddleware, routerReducer as routing, push } from 'react-router-redux'
+import persistState from 'redux-localstorage'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 
 import user from './reducers/user';
 import userActions from './actions/user';
@@ -19,7 +20,7 @@ export default function configureStore(initialState, routerHistory) {
     routing
   };
 
-  const middlewares = [ thunk, router ];
+  const middlewares = [ thunk, router, logger ];
 
   const composeEnhancers = (() => {
     const compose_ = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
