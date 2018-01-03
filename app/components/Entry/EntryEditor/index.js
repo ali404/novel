@@ -1,13 +1,9 @@
 import React, {Component} from 'react'
 import {RichUtils} from 'draft-js'
-
-import './style.css'
+//import './style.css'
 
 import Editor from 'draft-js-plugins-editor'
 //import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
-
-import 'draft-js-static-toolbar-plugin/lib/plugin.css'
-import 'draft-js-undo-plugin/lib/plugin.css'
 
 export default class EntryEditor extends Component {
   constructor(props) {

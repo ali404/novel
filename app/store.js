@@ -4,19 +4,24 @@ import persistState from 'redux-localstorage'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 
-import user from './reducers/user';
-import userActions from './actions/user';
+// import user from './reducers/user';
+// import userActions from './actions/user';
+
+import entries from './reducers/entries'
+import entryTitles from './reducers/entryTitles'
+import * as actions from './actions'
 
 export default function configureStore(initialState, routerHistory) {
   const router = routerMiddleware(routerHistory);
 
   const actionCreators = {
-    ...userActions,
+    ...actions,
     push
   };
 
   const reducers = {
-    user,
+    entries,
+    entryTitles,
     routing
   };
 

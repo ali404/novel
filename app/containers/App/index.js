@@ -6,9 +6,9 @@ import {bindActionCreators} from 'redux'
 import * as actions from '../../actions'
 
 import Menu from '../../components/Menu'
-import EntryView from './EntryView'
+import EntryView from '../EntryView'
 
-import './app.style.css'
+//import './app.style.css'
 
 const AppView = ({actions, entries, entryTitles, match}) => (
   <div className="app">

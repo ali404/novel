@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { createMemoryHistory } from 'history';
 
 import App from './containers/App'
+import * as actions from './actions'
 
 import configureStore from './store';
 
@@ -15,12 +16,14 @@ const syncHistoryWithStore = (store, history) => {
   }
 };
 
-const initialState = {};
-const routerHistory = createMemoryHistory();
-const store = configureStore(initialState, routerHistory);
-syncHistoryWithStore(store, routerHistory);
+const initialState = {}
+const routerHistory = createMemoryHistory()
+const store = configureStore(initialState, routerHistory)
+syncHistoryWithStore(store, routerHistory)
 
-const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'));
+store.dispatch(actions.loadEntriesState())
+
+const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'))
 
 ReactDOM.render(
   <Provider store={store}>

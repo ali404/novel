@@ -1,16 +1,14 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
-import './style.css'
-import svg from './logo.svg'
+import style from './style.js'
+import Logo from './logo.js'
 
 import MdAdd from 'react-icons/lib/md/add'
 
 import uuidv4 from 'uuid/v4'
 
-const Menu = ({actions, entries, match}) => {
-  let entryList = []
-
-  let keysSorted = Object.keys(entries).sort((aKey, bKey) => {
+const sortKeys = (entries) => {
+  return Object.keys(entries).sort((aKey, bKey) => {
     let a = entries[aKey]
     let b = entries[bKey]
 
@@ -19,6 +17,12 @@ const Menu = ({actions, entries, match}) => {
 
     return dateA < dateB
   })
+}
+
+const Menu = ({actions, entries, match}) => {
+  let entryList = []
+
+  let keysSorted = sortKeys(entries)
 
   for(let id in keysSorted) {
     let entry = entries[keysSorted[id]]
@@ -35,27 +39,23 @@ const Menu = ({actions, entries, match}) => {
 
     entryList.push((
       <NavLink
-        className="menu-item menu-item--link"
+        style={Object.assign({}, style.item, style.link)}
         to={"/" + entry.id}
         key={entry.id}
         activeClassName="active"
       >
-        <p className="menu-item--link__title">
-          {title}
-        </p>
-        <p className="menu-item--link__date">
-          {dateString}
-        </p>
+        <p style={style.linkTitle}>{title}</p>
+        <p style={style.linkDate}>{dateString}</p>
       </NavLink>
     ))
   }
 
   return (
-    <div className="menu">
-      <img src={svg} className="menu-logo" alt="novel logo" />
-      <ul className="menu-items">
+    <div style={style.menu}>
+      <Logo />
+      <ul style={style.items}>
         <li
-          className="menu-item menu-item--add"
+          style={Object.assign({}, style.item, style.addItem)}
           onClick={ev => actions.addEntry(uuidv4(), new Date())}
           key="unique"
         >
