@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {RichUtils} from 'draft-js'
-//import './style.css'
 
 import Editor from 'draft-js-plugins-editor'
 //import createToolbarPlugin from 'draft-js-static-toolbar-plugin'

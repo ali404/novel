@@ -8,8 +8,6 @@ import * as actions from '../../actions'
 import Menu from '../../components/Menu'
 import EntryView from '../EntryView'
 
-//import './app.style.css'
-
 const AppView = ({actions, entries, entryTitles, match}) => (
   <div className="app">
     <Menu actions={actions} entries={entryTitles} match={match} />

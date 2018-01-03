@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
-import style from './style.js'
-import Logo from './logo.js'
 
 import MdAdd from 'react-icons/lib/md/add'
-
 import uuidv4 from 'uuid/v4'
+
+import Logo from './logo.js'
 
 const sortKeys = (entries) => {
   return Object.keys(entries).sort((aKey, bKey) => {
@@ -39,23 +38,23 @@ const Menu = ({actions, entries, match}) => {
 
     entryList.push((
       <NavLink
-        style={Object.assign({}, style.item, style.link)}
+        className="menu-item menu-item--link"
         to={"/" + entry.id}
         key={entry.id}
         activeClassName="active"
       >
-        <p style={style.linkTitle}>{title}</p>
-        <p style={style.linkDate}>{dateString}</p>
+        <p className="menu-item--link__title">{title}</p>
+        <p className="menu-item--link__date">{dateString}</p>
       </NavLink>
     ))
   }
 
   return (
-    <div style={style.menu}>
+    <div className="menu">
       <Logo />
-      <ul style={style.items}>
+      <ul className="menu-items">
         <li
-          style={Object.assign({}, style.item, style.addItem)}
+          className="menu-item menu-item--add"
           onClick={ev => actions.addEntry(uuidv4(), new Date())}
           key="unique"
         >

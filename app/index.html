@@ -17,6 +17,10 @@
         line-height: 1.4;
       }
 
+      /******** APP *********/
+
+      @import url('https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto:400,500|Gentium+Book+Basic|Neutron|Crimson+Text|Julius+Sans+One|Neuton|Cormorant+Infant|Vollkorn');
+
       html {
         --grey-900: rgba(33,33,33 ,1);
         --grey-800: rgba(66,66,66 ,1);
@@ -34,6 +38,7 @@
         --grey-200-transparent: rgba(238, 238, 238, 0.98);
       }
 
+      /* reset */
       html {
         width: 100%;
         height: 100%;
@@ -48,6 +53,134 @@
       #novel-app {
         height: 100%;
       }
+
+      /* app specific */
+
+      .app {
+        height: 100%;
+        display: flex;
+      }
+
+      .contents {
+        flex-grow: 1;
+        margin-left: 280px;
+        background-color: #ffffff;
+        padding-top: 100px;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      /******** MENU ********/
+
+      .menu {
+        height: 100%;
+        width: 280px;
+        position: fixed;
+        background-color: var(--grey-50);
+        border-right: 1px solid var(--grey-200);
+        color: var(--grey-50);
+        padding: 80px 0px;
+        box-sizing: border-box;
+      }
+
+      .menu-logo {
+        width: 180px;
+        margin-right: auto;
+        margin-left: 30px;
+        margin-bottom: 40px;
+      }
+
+      .menu-items {
+        padding: 0;
+        margin: 0;
+      }
+
+      .menu-item:first {
+        border-top: 1px solid var(--grey-300);
+      }
+
+      .menu-item {
+        border-bottom: 1px solid var(--grey-300);
+        color: black;
+        padding: 16px;
+        position: relative;
+        font-family: 'Playfair Display', sans-serif;
+        font-weight: 500;
+      }
+
+      .menu-item h4 {
+        font-size: 16px;
+        color: var(--grey-800);
+        margin: 0;
+      }
+
+      .menu-item svg {
+        position: absolute;
+        top: 15px;
+        right: 12px;
+        font-size: 18px;
+        color: var(--grey-800);
+      }
+
+      .menu-item:hover {
+        cursor: pointer;
+        background-color: var(--grey-200);
+      }
+
+      .menu-item.active:hover {
+        background-color: var(--blue-transparent);
+      }
+
+      .menu-item--link {
+        display: block;
+        text-decoration: none;
+      }
+
+      .menu-item--link:hover {
+        cursor: pointer;
+      }
+
+      .menu-item--link__title {
+        margin: 0;
+        margin-bottom: 8px;
+        color: var(--grey-800);
+      }
+
+      .active .menu-item--link__title {
+        color: var(--grey-50);
+      }
+
+      .active .menu-item--link__date {
+        color: var(--grey-200);
+      }
+
+      .menu-item--link__date {
+        margin: 0;
+        color: var(--grey-500);
+      }
+
+      .active {
+        background-color: var(--blue);
+      }
+
+      /******** EDITOR TITLE ********/
+
+      .entry-title {
+        background-color: transparent;
+        font-family: 'Playfair Display';
+        font-size: 48px;
+        width: 100%;
+        border: none;
+        margin-bottom: 40px;
+      }
+
+      .entry-title:focus {
+        outline: none;
+      }
+
+      /******* EDITOR *******/
+
+      
 
     </style>
   </head>
