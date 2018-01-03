@@ -3,10 +3,10 @@ import {Route, withRouter, Switch} from 'react-router'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import * as actions from '../../actions'
+import * as actions from '../actions'
 
-import Menu from '../../components/Menu'
-import EntryView from '../EntryView'
+import Menu from '../components/Menu'
+import EntryView from './EntryView'
 
 const AppView = ({actions, entries, entryTitles, match}) => (
   <div className="app">
