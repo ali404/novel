@@ -50,6 +50,7 @@ export const loadEntries = (callback) => {
   storage.get("entries", (error, data) => {
     if(error) throw error
 
+    console.log(storage.getDefaultDataPath())
     callback.call(this, data)
   })
 }
@@ -60,5 +61,17 @@ export const loadEntry = (id, callback) => {
     if(error) throw error
 
     callback.call(this, data)
+  })
+}
+
+// delete an entry from the filesystem
+export const deleteEntryFromFilesystem = (id, callback) => {
+  storage.get("entries", (error, data) => {
+    if(error) throw error
+
+    delete data[id]
+
+    storage.remove(id)
+    storage.set("entries", data, callback)
   })
 }

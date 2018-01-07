@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default function entries(state = {}, action) {
   switch(action.type) {
     case 'LOAD_ENTRY':
@@ -35,6 +37,8 @@ export default function entries(state = {}, action) {
           dateCreated: state[action.id].dateCreated
         }
       }
+    case 'DELETE_ENTRY':
+      return _.omit(state, [action.id])
     default:
       return state
   }

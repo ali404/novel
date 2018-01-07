@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default function entryTitles(state = {}, action) {
   switch(action.type) {
     case 'ADD_ENTRY':
@@ -20,6 +22,8 @@ export default function entryTitles(state = {}, action) {
       }
     case 'LOAD_ENTRIES':
       return action.entries
+    case 'DELETE_ENTRY':
+      return _.omit(state, [action.id])
     default:
       return state
   }

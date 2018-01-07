@@ -20,27 +20,34 @@ export default class EntryInfo extends Component {
 
   _deleteEntry = (ev) => {
     this.props.actions.deleteEntry(this.props.id)
+
   }
 
   render() {
     let icon = this.state.isInfoActive ? <MdClose /> : <MdInfoOutline />
-
-    return (
-      <div className="info" data-active={this.state.isInfoActive}>
-        <div className="info-icon" onClick={this._onClick}>{icon}</div>
-        <div className="info-data" data-active={this.state.isInfoActive}>
-          Entry title: {this.props.entry.title} <br />
-          Word count: 100 <br />
-          Date created: {this.props.entry.dateCreated} <br />
+    if(this.props.entry) {
+      return (
+        <div className="info" data-active={this.state.isInfoActive}>
+          <div className="info-icon" onClick={this._onClick}>{icon}</div>
+          <div className="info-data" data-active={this.state.isInfoActive}>
+            Entry title: {this.props.entry.title} <br />
+            Word count: 100 <br />
+            Date created: {this.props.entry.dateCreated} <br />
+          </div>
+          <button
+            className="info-delete"
+            data-active={this.state.isInfoActive}
+            onClick={this._deleteEntry}
+          >
+            Delete Entry
+          </button>
         </div>
-        <button
-          className="info-delete"
-          data-active={this.state.isInfoActive}
-          onClick={this._deleteEntry}
-        >
-          Delete Entry
-        </button>
-      </div>
-    )
+      )
+    }
+    else {
+      return (
+        <div>Not found</div>
+      )
+    }
   }
 }

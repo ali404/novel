@@ -3,7 +3,8 @@ import {
   updateTitle,
   saveState,
   loadEntries,
-  loadEntry
+  loadEntry,
+  deleteEntryFromFilesystem
 } from '../utils'
 
 export const addEntry = (id, dateCreated) => {
@@ -73,9 +74,11 @@ export const loadEntryState = (id) => {
 
 export const deleteEntry = (id) => {
   return (dispatch, _) => {
-    dispatch({
-      type: 'DELETE_ENTRY',
-      id: id
+    deleteEntryFromFilesystem(id, () => {
+      dispatch({
+        type: 'DELETE_ENTRY',
+        id: id
+      })
     })
   }
 }
