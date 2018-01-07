@@ -14,7 +14,7 @@ const sortKeys = (entries) => {
     let dateA = typeof a.dateCreated === 'string' ? new Date(a.dateCreated) : a.dateCreated
     let dateB = typeof b.dateCreated === 'string' ? new Date(b.dateCreated) : b.dateCreated
 
-    return dateA < dateB
+    return dateB - dateA
   })
 }
 
