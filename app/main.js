@@ -24,8 +24,8 @@ const installExtensions = async () => {
 };
 
 crashReporter.start({
-  productName: 'YourName',
-  companyName: 'YourCompany',
+  productName: 'Novel',
+  companyName: 'Novel',
   submitURL: 'https://your-domain.com/url-to-submit',
   uploadToServer: false
 });
@@ -43,12 +43,13 @@ app.on('ready', async () => {
     await installExtensions();
   }
 
-  mainWindow = new BrowserWindow({ 
-    width: 1000, 
+  mainWindow = new BrowserWindow({
+    width: 1000,
     height: 800,
     minWidth: 640,
     minHeight: 480,
-    show: false 
+    titleBarStyle: 'hiddenInset',
+    show: false
   });
 
   mainWindow.loadURL(url.format({
@@ -78,7 +79,7 @@ app.on('ready', async () => {
       app.on('activate', () => {
         mainWindow.show();
       });
-      
+
       app.on('before-quit', () => {
         forceQuit = true;
       });

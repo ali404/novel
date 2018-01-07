@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
-import style from './style.css.js'
 
 export default class Logo extends Component {
   render() {
     return (
       <svg
-        style={style.logo}
+        className="menu-logo"
         id="Layer_1"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
