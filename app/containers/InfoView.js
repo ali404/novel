@@ -6,14 +6,14 @@ import EntryInfo from '../components/EntryInfo'
 
 import * as actions from '../actions'
 
-const InfoView = ({match, entries, actions}) => {
+const InfoView = ({match, entries, actions, history}) => {
   let key = match.params.id
-
   return React.cloneElement(
     <EntryInfo
       entry={entries[match.params.id]}
       actions={actions}
       id={match.params.id}
+      history={history}
     />,
     {key: key}
   )

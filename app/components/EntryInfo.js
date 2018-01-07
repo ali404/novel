@@ -20,7 +20,7 @@ export default class EntryInfo extends Component {
 
   _deleteEntry = (ev) => {
     this.props.actions.deleteEntry(this.props.id)
-
+    this.props.history.push("/")
   }
 
   render() {
@@ -32,7 +32,7 @@ export default class EntryInfo extends Component {
           <div className="info-data" data-active={this.state.isInfoActive}>
             Entry title: {this.props.entry.title} <br />
             Word count: 100 <br />
-            Date created: {this.props.entry.dateCreated} <br />
+            {/* Date created: {this.props.entry.dateCreated} <br /> */}
           </div>
           <button
             className="info-delete"
