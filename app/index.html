@@ -60,9 +60,10 @@
         flex-grow: 1;
         margin-left: 280px;
         background-color: #ffffff;
-        padding-top: 100px;
+        padding-top: 40px;
         padding-left: 40px;
         padding-right: 40px;
+        position: relative;
       }
 
       /******** MENU ********/
@@ -186,6 +187,53 @@
         color: var(--grey-800);
         font-size: 20px;
         line-height: 1.4;
+      }
+
+      /******* EDITOR INFO *******/
+      .info {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+        border-radius: 2px;
+        padding: 12px;
+      }
+
+      .info[data-active="true"] {
+        background-color: var(--grey-100);
+      }
+
+      .info::after, .info::before {
+        display: table;
+        clear: both;
+        content: " ";
+      }
+
+      .info-icon {
+        color: var(--grey-600);
+        font-size: 24px;
+        float: right;
+      }
+
+      .info-icon:hover {
+        cursor: pointer;
+      }
+
+      .info-data {
+        padding-top: 20px;
+        padding-bottom: 16px;
+      }
+
+      .info-data[data-active="false"] {
+        display: none;
+      }
+
+      .info-delete {
+        float: right;
+        margin-top: -32px;
+      }
+
+      .info-delete[data-active="false"] {
+        display: none;
       }
 
     </style>

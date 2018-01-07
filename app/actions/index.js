@@ -70,3 +70,12 @@ export const loadEntryState = (id) => {
     })
   }
 }
+
+export const deleteEntry = (id) => {
+  return (dispatch, _) => {
+    dispatch({
+      type: 'DELETE_ENTRY',
+      id: id
+    })
+  }
+}

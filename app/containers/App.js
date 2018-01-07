@@ -6,12 +6,14 @@ import {bindActionCreators} from 'redux'
 import * as actions from '../actions'
 
 import Menu from '../components/Menu'
+import InfoView from './InfoView'
 import EntryView from './EntryView'
 
 const AppView = ({actions, entries, entryTitles, match}) => (
   <div className="app">
     <Menu actions={actions} entries={entryTitles} match={match} />
     <div className="contents">
+      <Route exact path="/:id" component={InfoView} />
       <Switch>
         <Route exact path="/:id" component={EntryView} />
       </Switch>
