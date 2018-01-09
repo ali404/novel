@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 import MdInfoOutline from 'react-icons/lib/md/info-outline'
 import MdClose from 'react-icons/lib/md/close'
 
+import {countWordsOnEditorState} from '../utils'
+
 export default class EntryInfo extends Component {
   constructor(props) {
     super(props)
@@ -25,13 +27,14 @@ export default class EntryInfo extends Component {
 
   render() {
     let icon = this.state.isInfoActive ? <MdClose /> : <MdInfoOutline />
+
     if(this.props.entry) {
       return (
         <div className="info" data-active={this.state.isInfoActive}>
           <div className="info-icon" onClick={this._onClick}>{icon}</div>
           <div className="info-data" data-active={this.state.isInfoActive}>
             Entry title: {this.props.entry.title} <br />
-            Word count: 100 <br />
+            Word count: {countWordsOnEditorState(this.props.entry.state)} <br />
             {/* Date created: {this.props.entry.dateCreated} <br /> */}
           </div>
           <button
