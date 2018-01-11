@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import uuidv4 from 'uuid/v4'
+import {remote} from 'electron'
 
 import MdAdd from 'react-icons/lib/md/add'
 import MdBook from 'react-icons/lib/md/book'
@@ -20,7 +21,40 @@ import {
   Separator
 } from './style'
 
+const calculateComputedWidth = (width, menuOpen) => {
+  // window can't be smaller than 640
+  // if window between 640 and 840, resize until 640
+  // if window bigger than 840, resize -200
+  if(!!menuOpen) {
+    // when menu is open
+    if(width < 920) {
+      return 720
+    }
+    else {
+      return width - 200
+    }
+  }
+  else {
+    if(width > 720) {
+      return width
+    }
+    else {
+      return width + 200
+    }
+  }
+}
+
 const Menu = ({actions, entries, settings, match}) => {
+
+  const toggleDev = () => {
+    let win = remote.getCurrentWindow()
+    const bounds = win.getBounds()
+    let newWidth = calculateComputedWidth(bounds.width, settings.menuOpen)
+    win.setSize(newWidth, bounds.height)
+
+    actions.toggleMenu()
+  }
+
   return (
     <MenuStyle>
       <Logo />
@@ -52,7 +86,7 @@ const Menu = ({actions, entries, settings, match}) => {
         /> */}
       </ul>
       <MenuActionableItems>
-        <MenuActionableItem onClick={_ => actions.toggleMenu()}>
+        <MenuActionableItem onClick={_ => toggleDev()}>
           {settings.menuOpen ? (
             <MdFirstPage />
           ) : (
