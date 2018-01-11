@@ -47,8 +47,9 @@ app.on('ready', async () => {
     width: 1000,
     height: 800,
     minWidth: 640,
-    minHeight: 480,
-    titleBarStyle: 'hiddenInset',
+    minHeight: 780,
+    titleBarStyle: 'customButtonsOnHover',
+    frame: false,
     show: false
   });
 

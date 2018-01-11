@@ -11,10 +11,18 @@ import InfoView from './InfoView'
 import EntryView from './EntryView'
 import withResource from '../hocs/withResource'
 
-const AppView = ({actions, entries, entryTitles, match}) => (
+const Notes = withResource([["notes", "entryTitles"], ["settings"]], NoteList)
+
+const AppView = ({actions, entries, entryTitles, match, settings}) => (
   <div className="app">
-    <Menu actions={actions} entries={entryTitles} match={match} />
-    <Route path="/notes" component={withResource("notes", "entryTitles", undefined, NoteList)} />
+    <Menu
+      actions={actions}
+      entries={entryTitles}
+      match={match}
+      settings={settings}
+    />
+
+    <Route path="/notes" component={Notes} />
     <div className="contents">
       {/* <Route exact path="/notes/:id" component={InfoView} /> */}
       <Route exact path="/notes/:id" component={EntryView} />
@@ -24,7 +32,8 @@ const AppView = ({actions, entries, entryTitles, match}) => (
 
 const menuState = state => ({
   entries: state.entries,
-  entryTitles: state.entryTitles
+  entryTitles: state.entryTitles,
+  settings: state.settings
 })
 
 const menuDispatch = dispatch => ({

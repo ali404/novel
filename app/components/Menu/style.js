@@ -33,7 +33,6 @@ export const DateTitle = styled.p`
 
 export const MenuItem = styled.li`
   /*border-bottom: 1px solid var(--grey-300);*/
-  color: black;
   display: block;
   padding: 16px;
   position: relative;
@@ -41,7 +40,7 @@ export const MenuItem = styled.li`
 
   & svg {
     font-size: 28px;
-    color: var(--grey-700);
+    color: var(--grey-800);
     transition: 0.1s all ease-in;
     display: block;
     margin: 0 auto;

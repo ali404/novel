@@ -9,6 +9,7 @@ import logger from 'redux-logger'
 
 import entries from './reducers/entries'
 import entryTitles from './reducers/entryTitles'
+import settings from './reducers/settings'
 import * as actions from './actions'
 
 export default function configureStore(initialState, routerHistory) {
@@ -22,6 +23,7 @@ export default function configureStore(initialState, routerHistory) {
   const reducers = {
     entries,
     entryTitles,
+    settings,
     routing
   };
 

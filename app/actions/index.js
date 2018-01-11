@@ -82,3 +82,9 @@ export const deleteEntry = (id) => {
     })
   }
 }
+
+export const toggleMenu = () => {
+  return {
+    type: 'TOGGLE_MENU'
+  }
+}

@@ -7,6 +7,7 @@ import MdBook from 'react-icons/lib/md/book'
 import MdChromeReaderMode from 'react-icons/lib/md/chrome-reader-mode'
 import MdChevronRight from 'react-icons/lib/md/chevron-right'
 import MdFirstPage from 'react-icons/lib/md/first-page'
+import MdLastPage from 'react-icons/lib/md/last-page'
 
 import Logo from './logo.js'
 import {
@@ -19,7 +20,7 @@ import {
   Separator
 } from './style'
 
-const Menu = ({actions, entries, match}) => {
+const Menu = ({actions, entries, settings, match}) => {
   return (
     <MenuStyle>
       <Logo />
@@ -51,8 +52,12 @@ const Menu = ({actions, entries, match}) => {
         /> */}
       </ul>
       <MenuActionableItems>
-        <MenuActionableItem>
-          <MdFirstPage />
+        <MenuActionableItem onClick={_ => actions.toggleMenu()}>
+          {settings.menuOpen ? (
+            <MdFirstPage />
+          ) : (
+            <MdLastPage />
+          )}
         </MenuActionableItem>
       </MenuActionableItems>
     </MenuStyle>

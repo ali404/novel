@@ -23,6 +23,8 @@ syncHistoryWithStore(store, routerHistory)
 
 store.dispatch(actions.loadEntriesState())
 
+console.log(store.getState())
+
 const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'))
 
 ReactDOM.render(

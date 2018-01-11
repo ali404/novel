@@ -2,15 +2,29 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 const withResource = (
-  resourceName,
-  resource,
-  id = undefined,
+  resources,
   WrappedComponent
 ) => {
 
-  const mapStateToProps = state => ({
-    [resourceName]: id ? state[resource][id] : state[resource]
-  })
+  const mapStateToProps = state => {
+    let stateProperties = {}
+
+    resources.forEach(res => {
+      switch(res.length) {
+        case 1:
+          stateProperties[res[0]] = state[res[0]]
+          break
+        case 2:
+          stateProperties[res[0]] = state[res[1]]
+          break
+        case 3:
+          stateProperties[res[0]] = state[res[1]][res[2]]
+          break
+      }
+    })
+
+    return stateProperties
+  }
 
   const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(actions, dispatch)
