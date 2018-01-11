@@ -1,13 +1,21 @@
 import React from 'react'
+import {withRouter} from 'react-router'
+import uuidv4 from 'uuid/v4'
 
 import NoteList from '../NoteList'
 import withResource from '../../hocs/withResource'
-import {NotesMenuStyle} from './style'
+import {NotesMenuStyle, MenuItem} from './style'
+import MdAdd from 'react-icons/lib/md/add'
 
-const Notes = withResource([["notes", "entryTitles"]], NoteList)
+const Notes = withRouter(withResource([["notes", "entryTitles"]], NoteList))
 
 const AddNote = ({actions}) => {
-  return (<div>Hello</div>)
+  return (
+    <MenuItem onClick={_ => actions.addEntry(uuidv4(), new Date())}>
+      Add a new note
+      <MdAdd />
+    </MenuItem>
+  )
 }
 
 const NotesMenu = ({actions, settings}) => {

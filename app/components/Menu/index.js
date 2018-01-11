@@ -3,7 +3,6 @@ import {NavLink} from 'react-router-dom'
 import uuidv4 from 'uuid/v4'
 import {remote} from 'electron'
 
-import MdAdd from 'react-icons/lib/md/add'
 import MdBook from 'react-icons/lib/md/book'
 import MdChromeReaderMode from 'react-icons/lib/md/chrome-reader-mode'
 import MdChevronRight from 'react-icons/lib/md/chevron-right'
