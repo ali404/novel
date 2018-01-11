@@ -17,12 +17,16 @@ export const MenuItem = styled.li`
   color: black;
   padding: 16px;
   position: relative;
-  font-family: 'Playfair Display', sans-serif;
+  font-family: 'Proxima Nova', sans-serif;
+  letter-spacing: -0.2px;
   font-weight: 500;
-  text-decoration: none;
 
   .active & {
     background-color: var(--blue);
+
+    & ${Title}, & ${DateTitle} {
+      color: var(--white);
+    }
   }
 
   .active &:hover {

@@ -16,7 +16,7 @@ const AppView = ({actions, entries, entryTitles, match}) => (
     <Menu actions={actions} entries={entryTitles} match={match} />
     <Route path="/notes" component={withResource("notes", "entryTitles", undefined, NoteList)} />
     <div className="contents">
-      <Route exact path="/notes/:id" component={InfoView} />
+      {/* <Route exact path="/notes/:id" component={InfoView} /> */}
       <Route exact path="/notes/:id" component={EntryView} />
     </div>
   </div>

@@ -1,15 +1,19 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import uuidv4 from 'uuid/v4'
 
 import MdAdd from 'react-icons/lib/md/add'
 import MdBook from 'react-icons/lib/md/book'
 import MdChromeReaderMode from 'react-icons/lib/md/chrome-reader-mode'
+import MdChevronRight from 'react-icons/lib/md/chevron-right'
+import MdFirstPage from 'react-icons/lib/md/first-page'
 
 import Logo from './logo.js'
 import {
   MenuStyle,
   MenuItem,
+  MenuActionableItem,
+  MenuActionableItems,
   Title,
   DateTitle,
   Separator
@@ -30,22 +34,27 @@ const Menu = ({actions, entries, match}) => {
           <MdBook />
         </li> */}
         <Separator />
-        <Link to="/notes">
+        <NavLink to="/notes" activeClassName="active">
           <MenuItem>
             <MdBook />
           </MenuItem>
-        </Link>
-        <Link to="/notebooks">
+        </NavLink>
+        <NavLink to="/notebooks" activeClassName="active">
           <MenuItem>
             <MdChromeReaderMode />
           </MenuItem>
-        </Link>
+        </NavLink>
         {/* <EntryListViewer
           actions={actions}
           entries={entries}
           match={match}
         /> */}
       </ul>
+      <MenuActionableItems>
+        <MenuActionableItem>
+          <MdFirstPage />
+        </MenuActionableItem>
+      </MenuActionableItems>
     </MenuStyle>
   )
 }

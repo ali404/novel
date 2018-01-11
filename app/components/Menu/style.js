@@ -10,11 +10,13 @@ export const MenuStyle = styled.div`
   height: 100%;
   width: 80px;
   position: fixed;
-  overflow-y: scroll;
-  background-color: '#fff';
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--white);
   border-right: 1px solid var(--grey-200);
   color: var(--grey-50);
-  padding: 60px 0;
+  padding: 40px 0 20px 0;
   box-sizing: border-box;
 `
 
@@ -33,6 +35,7 @@ export const DateTitle = styled.p`
 export const MenuItem = styled.li`
   /*border-bottom: 1px solid var(--grey-300);*/
   color: black;
+  display: block;
   padding: 16px;
   position: relative;
   transition: 0.1s all ease-in;
@@ -41,6 +44,8 @@ export const MenuItem = styled.li`
     font-size: 28px;
     color: var(--grey-700);
     transition: 0.1s all ease-in;
+    display: block;
+    margin: 0 auto;
   }
 
   &:hover {
@@ -51,6 +56,48 @@ export const MenuItem = styled.li`
       color: var(--white);
     }
   }
+
+  .active & {
+    background-color: var(--blue);
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--blue-transparent);
+    }
+  }
+`
+
+export const MenuActionableItem = styled.li`
+  display: block;
+  padding: 16px;
+  position: relative;
+  transition: 0.1s all ease-in;
+
+  & svg {
+    border-radius: 20px;
+    padding: 4px;
+    font-size: 28px;
+    display: block;
+    margin: 0 auto;
+    color: var(--grey-800);
+    transition: 0.1s all ease-in;
+  }
+
+  & svg:hover {
+    cursor: pointer;
+  }
+
+  & svg:hover {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+`
+
+export const MenuActionableItems = styled.ul`
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  align-self: flex-end;
 `
 
 export const SvgLogoLine = styled.path.attrs({
