@@ -12,7 +12,7 @@ export const MenuStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: var(--white);
+  background-color: var(--grey-50);
   border-right: 1px solid var(--grey-200);
   color: var(--grey-50);
   padding: 40px 0 20px 0;
@@ -71,7 +71,7 @@ export const MenuItem = styled.li`
 
 export const MenuActionableItem = styled.li`
   display: block;
-  padding: 16px;
+  padding: 8px;
   position: relative;
   transition: 0.1s all ease-in;
 
