@@ -78,10 +78,10 @@ export default class Note extends Component {
     let returned
 
     if(!this.props.entry) {
-      returned = null
+      return null
     }
     else {
-      returned = (
+      return (
         <div>
           <NoteTitle
             onChange={this._saveTitle}
@@ -90,14 +90,12 @@ export default class Note extends Component {
           <NoteEditor
             onChange={this._saveEditorState}
             initialEditorState={this.state.initialEditorState}
+            settings={this.props.settings}
+            actions={this.props.actions}
+            entry={this.props.entry}
           />
         </div>
       )
     }
-
-
-    return (
-      <div>{returned}</div>
-    )
   }
 }

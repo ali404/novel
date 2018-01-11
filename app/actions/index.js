@@ -88,3 +88,9 @@ export const toggleMenu = () => {
     type: 'TOGGLE_MENU'
   }
 }
+
+export const toggleInfo = () => {
+  return {
+    type: 'TOGGLE_INFO'
+  }
+}

@@ -1,5 +1,6 @@
 const defaultState = {
-  menuOpen: false
+  menuOpen: true,
+  infoOpen: false
 }
 
 export default function settings(state = defaultState, action) {
@@ -8,6 +9,11 @@ export default function settings(state = defaultState, action) {
       return {
         ...state,
         menuOpen: !state.menuOpen
+      }
+    case 'TOGGLE_INFO':
+      return {
+        ...state,
+        infoOpen: !state.infoOpen
       }
     default:
       return state
