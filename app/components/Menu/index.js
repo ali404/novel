@@ -1,69 +1,52 @@
-import React, {Component} from 'react'
-import {NavLink} from 'react-router-dom'
-
-import MdAdd from 'react-icons/lib/md/add'
+import React from 'react'
+import {Link} from 'react-router-dom'
 import uuidv4 from 'uuid/v4'
 
+import MdAdd from 'react-icons/lib/md/add'
+import MdBook from 'react-icons/lib/md/book'
+import MdChromeReaderMode from 'react-icons/lib/md/chrome-reader-mode'
+
 import Logo from './logo.js'
-
-const sortKeys = (entries) => {
-  return Object.keys(entries).sort((aKey, bKey) => {
-    let a = entries[aKey]
-    let b = entries[bKey]
-
-    let dateA = typeof a.dateCreated === 'string' ? new Date(a.dateCreated) : a.dateCreated
-    let dateB = typeof b.dateCreated === 'string' ? new Date(b.dateCreated) : b.dateCreated
-
-    return dateB - dateA
-  })
-}
+import {
+  MenuStyle,
+  MenuItem,
+  Title,
+  DateTitle,
+  Separator
+} from './style'
 
 const Menu = ({actions, entries, match}) => {
-  let entryList = []
-
-  let keysSorted = sortKeys(entries)
-
-  for(let id in keysSorted) {
-    let entry = entries[keysSorted[id]]
-    let title = entry.title === "" ? "Untitled" : entry.title
-    let dateString
-
-    if(typeof entry.dateCreated === 'string') {
-      dateString = new Date(entry.dateCreated)
-      dateString = dateString.toDateString()
-    }
-    else {
-      dateString = entry.dateCreated.toDateString()
-    }
-
-    entryList.push((
-      <NavLink
-        className="menu-item menu-item--link"
-        to={"/" + entry.id}
-        key={entry.id}
-        activeClassName="active"
-      >
-        <p className="menu-item--link__title">{title}</p>
-        <p className="menu-item--link__date">{dateString}</p>
-      </NavLink>
-    ))
-  }
-
   return (
-    <div className="menu">
+    <MenuStyle>
       <Logo />
       <ul className="menu-items">
-        <li
+        {/* <li
           className="menu-item menu-item--add"
           onClick={ev => actions.addEntry(uuidv4(), new Date())}
           key="unique"
-        >
-          <h4>Add a new entry</h4>
+          >
+          <Title>Add a new entry</Title>
           <MdAdd />
-        </li>
-        {entryList}
+          <MdBook />
+        </li> */}
+        <Separator />
+        <Link to="/notes">
+          <MenuItem>
+            <MdBook />
+          </MenuItem>
+        </Link>
+        <Link to="/notebooks">
+          <MenuItem>
+            <MdChromeReaderMode />
+          </MenuItem>
+        </Link>
+        {/* <EntryListViewer
+          actions={actions}
+          entries={entries}
+          match={match}
+        /> */}
       </ul>
-    </div>
+    </MenuStyle>
   )
 }
 

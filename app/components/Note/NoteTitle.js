@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EntryTitle = ({title, onChange}) => {
+const NoteTitle = ({title, onChange}) => {
   return (
     <input
       type="text"
@@ -16,4 +16,4 @@ const EntryTitle = ({title, onChange}) => {
   )
 }
 
-export default EntryTitle
+export default NoteTitle

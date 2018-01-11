@@ -4,7 +4,7 @@ import {RichUtils} from 'draft-js'
 import Editor from 'draft-js-plugins-editor'
 //import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
 
-export default class EntryEditor extends Component {
+export default class NoteEditor extends Component {
   constructor(props) {
     super(props)
 

@@ -6,7 +6,7 @@ import EntryEditor from './EntryEditor'
 
 import {EditorState, convertFromRaw, convertToRaw} from 'draft-js'
 
-export default class Entry extends Component {
+export default class Note extends Component {
   constructor(props) {
     super(props)
 
@@ -83,11 +83,11 @@ export default class Entry extends Component {
     else {
       returned = (
         <div>
-          <EntryTitle
+          <NoteTitle
             onChange={this._saveTitle}
             title={this.state.title}
           />
-          <EntryEditor
+          <NoteEditor
             onChange={this._saveEditorState}
             initialEditorState={this.state.initialEditorState}
           />
