@@ -39,13 +39,11 @@ export const MenuItem = styled.li`
 `
 
 export const NotesMenu = styled.ul`
-  position: fixed;
-  left: 80px;
   overflow-y: scroll;
+  height: 100vh;
   list-style: none;
-  width: 200px;
+  flex: 0 0 200px;
   padding: 0;
   margin: 0;
   border-right: 1px solid var(--grey-200);
-  height: 100%;
 `

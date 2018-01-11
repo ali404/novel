@@ -7,9 +7,8 @@ export const Separator = styled.div`
 `
 
 export const MenuStyle = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 80px;
-  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
