@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {RichUtils} from 'draft-js'
+import {RichUtils, convertToRaw} from 'draft-js'
+import _ from 'lodash'
 
 import Editor from 'draft-js-plugins-editor'
 //import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
@@ -23,13 +24,18 @@ export default class NoteEditor extends Component {
   }
 
   onChange = (editorState) => {
-    if(this.state.editorState !== editorState) {
-      this.setState({
-        editorState
-      }, () => {
+    let lastState = editorState
+    this.setState({
+      editorState
+    }, () => {
+      if(_.isEqual(
+          convertToRaw(lastState.getCurrentContent()),
+          convertToRaw(editorState.getCurrentContent())
+        )
+      ) {
         this.props.onChange(editorState)
-      })
-    }
+      }
+    })
   }
 
   render() {

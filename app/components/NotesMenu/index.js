@@ -19,7 +19,6 @@ const AddNote = ({actions}) => {
 }
 
 const NotesMenu = ({actions, settings}) => {
-  console.log(settings)
   return (
     <NotesMenuStyle open={settings.menuOpen}>
       <AddNote actions={actions} />

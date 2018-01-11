@@ -49,8 +49,7 @@ export const saveState = (id, dataState) => {
 export const loadEntries = (callback) => {
   storage.get("entries", (error, data) => {
     if(error) throw error
-
-    console.log(storage.getDefaultDataPath())
+    
     callback.call(this, data)
   })
 }
