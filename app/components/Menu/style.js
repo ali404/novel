@@ -62,6 +62,10 @@ export const MenuItem = styled.li`
     &:hover {
       background-color: var(--blue-transparent);
     }
+
+    & svg {
+      color: var(--white);
+    }
   }
 `
 
