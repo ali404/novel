@@ -7,11 +7,12 @@ import * as actions from '../actions'
 
 import Menu from '../components/Menu'
 import NoteList from '../components/NoteList'
+import NotesMenu from '../components/NotesMenu'
 import InfoView from './InfoView'
 import EntryView from './EntryView'
 import withResource from '../hocs/withResource'
 
-const Notes = withResource([["notes", "entryTitles"], ["settings"]], NoteList)
+const Notes = withResource([["settings"]], NotesMenu)
 
 const AppView = ({actions, entries, entryTitles, match, settings}) => (
   <div className="app">

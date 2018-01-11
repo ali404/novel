@@ -15,7 +15,7 @@ const sortKeys = (entries) => {
   })
 }
 
-const NoteList = ({actions, notes, match, settings}) => {
+const NoteList = ({actions, notes, match}) => {
   let notesList = []
   let keysSorted = sortKeys(notes)
 
@@ -46,7 +46,7 @@ const NoteList = ({actions, notes, match, settings}) => {
     ))
   }
 
-  return <NotesMenu open={settings.menuOpen}>{notesList}</NotesMenu>
+  return <div>{notesList}</div>
 }
 
 export default NoteList
