@@ -1,4 +1,4 @@
-const storage = window.require('electron-json-storage')
+import storage from 'electron-json-storage'
 
 // saves an entry to the filesystem
 // only saves the minimal data (title, id, dateCreated)
