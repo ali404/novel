@@ -2,14 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import Entry from '../components/Entry'
+import Note from '../components/Note'
 
 import * as actions from '../actions'
 
 const EntryView = ({match, entries, actions}) => {
   let key = match.params.id
   return React.cloneElement(
-    <Entry
+    <Note
       entry={entries[match.params.id]}
       actions={actions}
       id={match.params.id}

@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-import {Title, DateTitle} from './style'
+import {Title, DateTitle, NotesMenu, MenuItem} from './style'
 
 const sortKeys = (entries) => {
   return Object.keys(entries).sort((aKey, bKey) => {
@@ -15,38 +15,38 @@ const sortKeys = (entries) => {
   })
 }
 
-const EntryListViewer = ({actions, entries, match}) => {
-  let entryList = []
-
-  let keysSorted = sortKeys(entries)
+const NoteList = ({actions, notes, match}) => {
+  let notesList = []
+  let keysSorted = sortKeys(notes)
 
   for(let id in keysSorted) {
-    let entry = entries[keysSorted[id]]
-    let title = entry.title === "" ? "Untitled" : entry.title
+    let note = notes[keysSorted[id]]
+    let title = note.title === "" ? "Untitled" : note.title
     let dateString
 
-    if(typeof entry.dateCreated === 'string') {
-      dateString = new Date(entry.dateCreated)
+    if(typeof note.dateCreated === 'string') {
+      dateString = new Date(note.dateCreated)
       dateString = dateString.toDateString()
     }
     else {
-      dateString = entry.dateCreated.toDateString()
+      dateString = note.dateCreated.toDateString()
     }
 
-    entryList.push((
+    notesList.push((
       <NavLink
-        className="menu-item menu-item--link"
-        to={"/" + entry.id}
-        key={entry.id}
+        to={"/notes/" + note.id}
+        key={note.id}
         activeClassName="active"
       >
-        <Title>{title}</Title>
-        <DateTitle>{dateString}</DateTitle>
+        <MenuItem>
+          <Title>{title}</Title>
+          <DateTitle>{dateString}</DateTitle>
+        </MenuItem>
       </NavLink>
     ))
   }
 
-  return <div>{entryList}</div>
+  return <NotesMenu>{notesList}</NotesMenu>
 }
 
-export default EntryListViewer
+export default NoteList

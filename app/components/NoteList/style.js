@@ -19,4 +19,29 @@ export const MenuItem = styled.li`
   position: relative;
   font-family: 'Playfair Display', sans-serif;
   font-weight: 500;
+  text-decoration: none;
+
+  .active & {
+    background-color: var(--blue);
+  }
+
+  .active &:hover {
+    background-color: var(--blue-transparent);
+  }
+
+  &:hover {
+    background-color: var(--grey-100);
+  }
+`
+
+export const NotesMenu = styled.ul`
+  position: fixed;
+  left: 80px;
+  overflow-y: scroll;
+  list-style: none;
+  width: 200px;
+  padding: 0;
+  margin: 0;
+  border-right: 1px solid var(--grey-200);
+  height: 100%;
 `

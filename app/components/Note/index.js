@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
 
-import EntryTitle from './EntryTitle'
-import EntryEditor from './EntryEditor'
+import NoteTitle from './NoteTitle'
+import NoteEditor from './NoteEditor'
 
 import {EditorState, convertFromRaw, convertToRaw} from 'draft-js'
 
