@@ -3,6 +3,7 @@ import _ from 'lodash'
 
 import NoteTitle from './NoteTitle'
 import NoteEditor from './NoteEditor'
+import NoteInfo from '../NoteInfo'
 
 import {EditorState, convertFromRaw, convertToRaw} from 'draft-js'
 
@@ -94,6 +95,9 @@ export default class Note extends Component {
             actions={this.props.actions}
             entry={this.props.entry}
           />
+          {this.props.settings.infoOpen ? (
+            <NoteInfo actions={this.props.actions} note={this.props.entry} />
+          ) : null}
         </div>
       )
     }

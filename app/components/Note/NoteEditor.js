@@ -4,9 +4,6 @@ import _ from 'lodash'
 
 import Editor from 'draft-js-plugins-editor'
 //import createToolbarPlugin from 'draft-js-static-toolbar-plugin'
-import MdDelete from 'react-icons/lib/md/delete'
-
-import {Info, Title, ActionableIcon} from './style'
 
 export default class NoteEditor extends Component {
   constructor(props) {
@@ -50,16 +47,6 @@ export default class NoteEditor extends Component {
           handleKeyCommand={this.handleKeyCommand}
           className="editor"
         />
-        {this.props.settings.infoOpen ? (
-          <Info>
-            <Title>Note Settings</Title>
-            <ActionableIcon onClick={ev => {
-              this.props.actions.deleteEntry(this.props.entry.id)
-            }}>
-              <MdDelete />
-            </ActionableIcon>
-          </Info>
-        ) : null}
       </div>
     )
   }

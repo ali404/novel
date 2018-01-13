@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 import uuidv4 from 'uuid/v4'
 
@@ -18,13 +18,22 @@ const AddNote = ({actions}) => {
   )
 }
 
-const NotesMenu = ({actions, settings}) => {
-  return (
-    <NotesMenuStyle open={settings.menuOpen}>
-      <AddNote actions={actions} />
-      <Notes />
-    </NotesMenuStyle>
-  )
+class NotesMenu extends Component {
+  componentWillReceiveProps(newProps) {
+    if(newProps.settings.menuOpen !== this.props.settings.menuOpen) {
+      // the prop has changed, begin animation!
+
+    }
+  }
+
+  render() {
+    return (
+      <NotesMenuStyle open={this.props.settings.menuOpen}>
+        <AddNote actions={this.props.actions} />
+        <Notes />
+      </NotesMenuStyle>
+    )
+  }
 }
 
 export default NotesMenu

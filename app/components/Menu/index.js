@@ -12,7 +12,7 @@ import MdLastPage from 'react-icons/lib/md/last-page'
 import MdInfoOutline from 'react-icons/lib/md/info-outline'
 import MdInfo from 'react-icons/lib/md/info'
 
-import Logo from './logo.js'
+import Logo from './Logo.js'
 import {
   MenuStyle,
   MenuItem,
@@ -37,23 +37,49 @@ const calculateComputedWidth = (width, menuOpen) => {
 
 const Menu = ({actions, entries, settings, match}) => {
 
+  let start = null
+  let win = null
+  let initialBounds = null
+
+  const stepFunc = (expandWidth, increase) => {
+    return (timestamp) => {
+      if(!start) start = timestamp
+      let progress = timestamp - start
+      if(increase) {
+        win.setSize(Math.floor(initialBounds.width + (progress)), initialBounds.height)
+      }
+      else {
+        win.setSize(Math.floor(initialBounds.width - (progress)), initialBounds.height)
+      }
+
+      if(progress < expandWidth) {
+        window.requestAnimationFrame(stepFunc(expandWidth, increase))
+      }
+      else {
+        start = null
+        initialBounds = null
+      }
+    }
+  }
+
   const toggleDev = () => {
-    let win = remote.getCurrentWindow()
-    const bounds = win.getBounds()
-    let newWidth = bounds.width
-    newWidth = settings.menuOpen ? newWidth - 200 : newWidth + 200
-    win.setSize(newWidth, bounds.height)
+    win = remote.getCurrentWindow()
+    initialBounds = win.getBounds()
+
+    start = null
+    window.requestAnimationFrame(stepFunc(200, !settings.menuOpen))
 
     actions.toggleMenu()
   }
 
   const toggleInfo = () => {
+    win = remote.getCurrentWindow()
+    initialBounds = win.getBounds()
+
+    start = null
+    window.requestAnimationFrame(stepFunc(300, !settings.infoOpen))
+
     actions.toggleInfo()
-    const win = remote.getCurrentWindow()
-    const bounds = win.getBounds()
-    let newWidth = bounds.width
-    newWidth = settings.infoOpen ? newWidth - 320 : newWidth + 320
-    win.setSize(newWidth, bounds.height)
   }
 
   const openedOnNotes = () => (

@@ -10,6 +10,7 @@ export const NotesMenuStyle = styled.ul`
   padding: 0;
   margin: 0;
   border-right: ${props => props.open ? '1px solid var(--grey-200)' : 'none'};
+  background-color: #fff;
 `
 
 export const MenuItem = Item.extend`
