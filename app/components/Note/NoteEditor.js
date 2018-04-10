@@ -28,13 +28,14 @@ export default class NoteEditor extends Component {
     this.setState({
       editorState
     }, () => {
-      if(_.isEqual(
-          convertToRaw(lastState.getCurrentContent()),
-          convertToRaw(editorState.getCurrentContent())
-        )
-      ) {
-        this.props.onChange(editorState)
-      }
+      this.props.onChange(editorState)
+      // if(_.isEqual(
+      //     convertToRaw(lastState.getCurrentContent()),
+      //     convertToRaw(editorState.getCurrentContent())
+      //   )
+      // ) {
+      //   this.props.onChange(editorState)
+      // }
     })
   }
 

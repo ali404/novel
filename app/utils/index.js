@@ -49,7 +49,7 @@ export const saveState = (id, dataState) => {
 export const loadEntries = (callback) => {
   storage.get("entries", (error, data) => {
     if(error) throw error
-    
+
     callback.call(this, data)
   })
 }
@@ -58,7 +58,6 @@ export const loadEntries = (callback) => {
 export const loadEntry = (id, callback) => {
   storage.get(id, (error, data) => {
     if(error) throw error
-
     callback.call(this, data)
   })
 }

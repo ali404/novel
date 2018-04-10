@@ -5,7 +5,7 @@ import NoteTitle from './NoteTitle'
 import NoteEditor from './NoteEditor'
 import NoteInfo from '../NoteInfo'
 
-import {EditorState, convertFromRaw, convertToRaw} from 'draft-js'
+import {EditorState, convertFromRaw, convertToRaw, ContentState} from 'draft-js'
 
 export default class Note extends Component {
   constructor(props) {
@@ -28,18 +28,26 @@ export default class Note extends Component {
 
   _setState(props) {
     const setEditorState = (editorState) => {
-      if(editorState === "") {
-        return EditorState.createEmpty()
-      }
-      else {
-        return EditorState.createWithContent(convertFromRaw(editorState))
-      }
+        console.log(editorState)
+        if(editorState == "") {
+          return EditorState.createEmpty()
+        }
+        
+        return editorState
+        // if(editorState === "") {
+        //   return EditorState.createEmpty()
+        // }
+        // else {
+        //   return EditorState.createWithContent(editorState)
+        // }
     }
 
     if(props.entry) {
+      const entryState = setEditorState(props.entry.state)
       return {
         title: props.entry.title,
-        initialEditorState: setEditorState(props.entry.state),
+        entryState: entryState,
+        initialEditorState: entryState,
         throttled_save: this._returnThrottled()
       }
     }
@@ -50,8 +58,9 @@ export default class Note extends Component {
 
   _returnThrottled() {
     return _.debounce(() => {
-      this.props.actions.saveEntryState(
-        this.props.entry.id
+      this.props.actions.saveEditorState(
+        this.props.entry.id,
+        this.state.entryState
       )
     }, 1000)
   }
@@ -66,18 +75,13 @@ export default class Note extends Component {
     this.state.throttled_save()
   }
 
-  _saveEditorState = (editorState) => {
-    this.props.actions.updateEntryState(
-      this.props.entry.id,
-      convertToRaw(editorState.getCurrentContent())
-    )
-
+  _saveEditorState = (entryState) => {
+    this.setState({entryState})
     this.state.throttled_save()
   }
 
   render() {
-    let returned
-
+    // entry will be null if the entry is not in localstore
     if(!this.props.entry) {
       return null
     }

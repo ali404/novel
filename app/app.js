@@ -9,6 +9,8 @@ import * as actions from './actions'
 
 import configureStore from './store';
 
+console.log(process.env.REACT_VERSION)
+
 const syncHistoryWithStore = (store, history) => {
   const { routing } = store.getState();
   if(routing && routing.location) {

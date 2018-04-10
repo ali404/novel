@@ -1,8 +1,10 @@
 import path from 'path';
 import url from 'url';
 import {app, crashReporter, BrowserWindow, Menu} from 'electron';
+import packageJson from '../package.json'
 
 const isDevelopment = (process.env.NODE_ENV === 'development');
+process.env.REACT_VERSION = packageJson.version
 
 let mainWindow = null;
 let forceQuit = false;

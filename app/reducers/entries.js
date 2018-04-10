@@ -27,7 +27,7 @@ export default function entries(state = {}, action) {
           dateCreated: state[action.id].dateCreated
         }
       }
-    case 'UPDATE_ENTRY_STATE':
+    case 'SAVE_ENTRY_STATE':
       return {
         ...state,
         [action.id]: {

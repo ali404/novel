@@ -6,6 +6,7 @@ import {
   loadEntry,
   deleteEntryFromFilesystem
 } from '../utils'
+import {convertToRaw, convertFromRaw, EditorState} from 'draft-js'
 
 export const addEntry = (id, dateCreated) => {
   saveEntryToFilesystem(id, dateCreated)
@@ -36,16 +37,18 @@ export const updateEntryState = (id, state) => {
   }
 }
 
-// save the entry state in the file system
-export const saveEntryState = (id) => {
+// save the editor state in the file system
+export const saveEditorState = (id, editorState) => {
   return (dispatch, getState) => {
     const {entries} = getState()
-    const entry = entries[id]
-
+    let entry = entries[id]
+    entry.state = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
     saveState(id, entry)
+
     dispatch({
       type: "SAVE_ENTRY_STATE",
-      id: id
+      id: id,
+      state: editorState
     })
   }
 }
@@ -64,9 +67,21 @@ export const loadEntriesState = () => {
 export const loadEntryState = (id) => {
   return (dispatch, _) => {
     loadEntry(id, (data) => {
+      let state
+      try {
+        state = EditorState.createWithContent(convertFromRaw(JSON.parse(data.state)))
+      }
+      catch(err) {
+        console.log(err)
+        state = EditorState.createEmpty()
+      }
+
       dispatch({
         type: 'LOAD_ENTRY',
-        entry: data
+        entry: {
+          ...data,
+          state: state
+        }
       })
     })
   }

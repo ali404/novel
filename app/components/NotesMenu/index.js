@@ -19,13 +19,6 @@ const AddNote = ({actions}) => {
 }
 
 class NotesMenu extends Component {
-  componentWillReceiveProps(newProps) {
-    if(newProps.settings.menuOpen !== this.props.settings.menuOpen) {
-      // the prop has changed, begin animation!
-
-    }
-  }
-
   render() {
     return (
       <NotesMenuStyle open={this.props.settings.menuOpen}>
