@@ -6,17 +6,17 @@ import uuidv4 from 'uuid/v4'
 
 import NoteList from '../NoteList'
 import withResource from '../../hocs/withResource'
-import {NotesMenuStyle, MenuItem} from './style'
+import {NotesMenuStyle, MenuItemAdd} from './style'
 import MdAdd from 'react-icons/lib/md/add'
 
 const Notes = withRouter(NoteList)
 
 const AddNote = ({actions}) => {
   return (
-    <MenuItem onClick={_ => actions.addEntry(uuidv4(), new Date())}>
+    <MenuItemAdd onClick={_ => actions.addEntry(uuidv4(), new Date())}>
       Add a new note
       <MdAdd />
-    </MenuItem>
+    </MenuItemAdd>
   )
 }
 

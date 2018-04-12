@@ -1,4 +1,12 @@
-const initialState = {}
+const initialState = {
+    default: 'Inbox',
+    'Inbox': {
+        id: 'Inbox',
+        title: 'Inbox',
+        dateCreated: '0',
+        entryCount: 0
+    }
+}
 
 export default function notebooks(state = initialState, action) {
     switch(action.type) {

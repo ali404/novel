@@ -28,12 +28,11 @@ export default class Note extends Component {
 
   _setState(props) {
     const setEditorState = (editorState) => {
-        console.log(editorState)
-        if(editorState == "") {
-          return EditorState.createEmpty()
-        }
+      if(editorState == "") {
+        return EditorState.createEmpty()
+      }
         
-        return editorState
+      return editorState
     }
 
     if(props.entry) {

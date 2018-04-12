@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import NotesMenu from '../NotesMenu'
+import NotebookSwitch from '../NotebookSwitch'
 import NotebookList from '../NotebookList'
 import withResource from '../../hocs/withResource'
 
@@ -33,7 +34,10 @@ export default class Menu extends Component {
       </MenuTabs>
       <MenuContent>
         {this.state.notesTab ? (
-          <NotesMenu />
+          <div>
+            <NotebookSwitch />
+            <NotesMenu />
+          </div>
         ) : (
           <NotebookList />
         )}

@@ -19,7 +19,7 @@ export const ContentContainer = styled.div`
 
 export const Main = styled.div`
   max-width: 620px;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-left: 36px;
   padding-right: 40px;
   padding-bottom: 200px;

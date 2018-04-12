@@ -23,7 +23,7 @@ export const MenuItem = styled.li`
   position: relative;
   font-family: 'Proxima Nova', sans-serif;
   font-weight: 500;
-  box-shadow: rgba(133, 133, 133, 50) 0px 2px 4px 0px;
+  box-shadow: rgba(133, 133, 133, 0.5) 0px 2px 4px 0px;
   transition: 0.1s box-shadow ease-in;
 
   .active & {
@@ -39,6 +39,6 @@ export const MenuItem = styled.li`
   }
 
   &:hover {
-    box-shadow: rgba(133, 133, 133, 50) 0px 2px 14px 0px;
+    box-shadow: rgba(133, 133, 133, 0.5) 0px 2px 14px 0px;
   }
 `
