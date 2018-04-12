@@ -4,7 +4,8 @@ import {
   saveState,
   loadEntries,
   loadEntry,
-  deleteEntryFromFilesystem
+  deleteEntryFromFilesystem,
+  saveNotebook
 } from '../utils'
 import {convertToRaw, convertFromRaw, EditorState} from 'draft-js'
 
@@ -109,3 +110,19 @@ export const toggleInfo = () => {
     type: 'TOGGLE_INFO'
   }
 }
+
+export const addNotebook = (id, title, dateCreated) => {
+  saveNotebook(id, title, dateCreated)
+  
+  return {
+    type: 'ADD_NOTEBOOK',
+    id: id,
+    title: title,
+    dateCreated: dateCreated
+  }
+}
+
+export const setDefaultNotebook = id => ({
+  type: 'SET_DEFAULT_NOTEBOOK',
+  id: id
+})

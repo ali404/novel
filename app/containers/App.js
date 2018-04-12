@@ -10,6 +10,7 @@ import NoteList from '../components/NoteList'
 import NotesMenu from '../components/NotesMenu'
 import InfoView from './InfoView'
 import EntryView from './EntryView'
+import NotebookCreator from '../components/NotebookCreator'
 import withResource from '../hocs/withResource'
 
 const Notes = withResource([["settings"]], NotesMenu)
@@ -25,6 +26,7 @@ const AppView = ({actions, entries, entryTitles, match, settings}) => (
 
     <Route path="/notes" component={Notes} />
     <div className="contents">
+      <Route exact path="/notebooks" component={NotebookCreator} />
       {/* <Route exact path="/notes/:id" component={InfoView} /> */}
       <Route exact path="/notes/:id" component={EntryView} />
     </div>

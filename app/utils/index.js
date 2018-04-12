@@ -96,3 +96,18 @@ export const wordCount = (text) => {
 
   return wordCount
 }
+
+export const saveNotebook = (id, title, dateCreated) => {
+  storage.get("notebooks", (error, data) => {
+    data[id] = {
+      id: id,
+      title: title,
+      entryCount: 0
+    }
+
+    storage.set("notebooks", data, (error) => {
+      if(error) throw error;
+    })
+  })
+
+}

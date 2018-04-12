@@ -10,6 +10,7 @@ import logger from 'redux-logger'
 import entries from './reducers/entries'
 import entryTitles from './reducers/entryTitles'
 import settings from './reducers/settings'
+import notebooks from './reducers/notebooks'
 import * as actions from './actions'
 
 export default function configureStore(initialState, routerHistory) {
@@ -24,6 +25,7 @@ export default function configureStore(initialState, routerHistory) {
     entries,
     entryTitles,
     settings,
+    notebooks,
     routing
   };
 
@@ -37,7 +39,7 @@ export default function configureStore(initialState, routerHistory) {
     return compose;
   })();
 
-  const enhancer = composeEnhancers(applyMiddleware(...middlewares), persistState(["entryTitles", "settings", "routing"]));
+  const enhancer = composeEnhancers(applyMiddleware(...middlewares), persistState(["entryTitles", "settings", "routing", "notebooks"]));
   const rootReducer = combineReducers(reducers);
 
   return createStore(rootReducer, initialState, enhancer);

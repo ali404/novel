@@ -34,12 +34,6 @@ export default class Note extends Component {
         }
         
         return editorState
-        // if(editorState === "") {
-        //   return EditorState.createEmpty()
-        // }
-        // else {
-        //   return EditorState.createWithContent(editorState)
-        // }
     }
 
     if(props.entry) {
