@@ -6,5 +6,5 @@ export const NotebookSwitcher = styled.div`
   font-size: 14px;
   color: ${colors.grey["600"]};
   padding: 0 24px;
-  margin: 12px 0 16px;
+  margin: 16px 0 6px;
 `

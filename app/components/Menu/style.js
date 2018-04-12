@@ -13,11 +13,11 @@ export const MenuContent = styled.div`
 export const MenuTabs = styled.div`
   padding: 8px 12px;
   border-bottom: 2px solid ${colors.grey["300"]};
-  margin: 0 28px 16px;
+  margin: 0 24px 16px;
   margin-bottom: 8px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 `
 
 export const MenuTab = styled.div`

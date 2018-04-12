@@ -18,7 +18,7 @@ export const DateTitle = styled.p`
 
 export const MenuItem = styled.li`
   padding: 16px 12px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   border-radius: 2px;
   position: relative;
   font-family: 'Proxima Nova', sans-serif;
