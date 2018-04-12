@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import uuidv4 from 'uuid/v4'
 
@@ -7,7 +9,7 @@ import withResource from '../../hocs/withResource'
 import {NotesMenuStyle, MenuItem} from './style'
 import MdAdd from 'react-icons/lib/md/add'
 
-const Notes = withRouter(withResource([["notes", "entryTitles"]], NoteList))
+const Notes = withRouter(NoteList)
 
 const AddNote = ({actions}) => {
   return (
@@ -29,4 +31,12 @@ class NotesMenu extends Component {
   }
 }
 
-export default NotesMenu
+const bindDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+})
+
+const bindStateToProps = state => ({
+  settings: state.settings
+})
+
+export default connect(bindStateToProps, bindDispatchToProps, null, {pure: false})(NotesMenu)

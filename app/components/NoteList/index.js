@@ -1,5 +1,8 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 import {Title, DateTitle, NotesMenu, MenuItem} from './style'
 
@@ -15,7 +18,7 @@ const sortKeys = (entries) => {
   })
 }
 
-const NoteList = ({actions, notes, match}) => {
+const NoteList = ({notes, match}) => {
   let notesList = []
   let keysSorted = sortKeys(notes)
 
@@ -40,7 +43,7 @@ const NoteList = ({actions, notes, match}) => {
       >
         <MenuItem>
           <Title>{title}</Title>
-          <DateTitle>{dateString}</DateTitle>
+          <DateTitle>created on {dateString}</DateTitle>
         </MenuItem>
       </NavLink>
     ))
@@ -49,4 +52,10 @@ const NoteList = ({actions, notes, match}) => {
   return <div>{notesList}</div>
 }
 
-export default NoteList
+const bindStateToProps = state => ({
+  notes: state.entryTitles
+})
+
+export default connect(bindStateToProps, null, null, {
+  pure: false
+})(NoteList)
