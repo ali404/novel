@@ -4,9 +4,8 @@ import {colors} from '../../styled/constants'
 
 export const NotesMenuStyle = styled.ul`
   overflow-y: scroll;
-  height: 55vh;
   list-style: none;
-  padding: 10px 22px 0;
+  padding: 0;
   margin: 0;
 `
 
@@ -27,7 +26,7 @@ export const MenuItem = Item.extend`
 `
 
 export const MenuItemAdd = MenuItem.extend`
-  background-color: ${colors.grey["100"]};
-  box-shadow: rgba(133, 133, 133, 0.5) 0 0 2px 0;
   font-size: 12px;
+  padding: 16px;
+  border-top: 1px solid ${colors.grey['200']};
 `

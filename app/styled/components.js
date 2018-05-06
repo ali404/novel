@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import {colors} from './constants'
 
 export const AppContainer = styled.div`
-  padding: 60px 80px;
+  padding: 40px 10px 0 0;
   display: block;
   box-sizing: border-box;
   width: 100%;

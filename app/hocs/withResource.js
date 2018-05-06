@@ -20,6 +20,8 @@ const withResource = (
         case 3:
           stateProperties[res[0]] = state[res[1]][res[2]]
           break
+        default:
+          throw new Error("invalid resources param passed")
       }
     })
 

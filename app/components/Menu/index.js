@@ -6,14 +6,15 @@ import NotebookList from '../NotebookList'
 import withResource from '../../hocs/withResource'
 
 import {MenuContainer, MenuContent, MenuTabs, MenuTab} from './style'
+import {connect} from 'react-redux'
 
-export default class Menu extends Component {
+class Menu extends Component {
   state = {
     notesTab: true
   }
 
   render() {
-    return <MenuContainer>
+    return <MenuContainer active={this.props.settings.menuOpen}>
       <MenuTabs>
         <MenuTab 
           onClick={ev => {
@@ -45,3 +46,11 @@ export default class Menu extends Component {
     </MenuContainer>
   }
 }
+
+const mapStateToProps = state => ({
+  settings: state.settings
+})
+
+export default connect(mapStateToProps, null, null, {
+  pure: false
+})(Menu)

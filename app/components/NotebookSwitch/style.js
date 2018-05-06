@@ -5,6 +5,6 @@ export const NotebookSwitcher = styled.div`
   font-family: 'Proxima Nova';
   font-size: 14px;
   color: ${colors.grey["600"]};
-  padding: 0 24px;
+  padding: 0 16px 8px;
   margin: 16px 0 6px;
 `

@@ -17,28 +17,26 @@ export const DateTitle = styled.p`
 `
 
 export const MenuItem = styled.li`
-  padding: 16px 12px;
-  margin-bottom: 18px;
-  border-radius: 2px;
+  padding: 8px 16px;
+  border-bottom: 1px solid ${colors.grey['200']};
   position: relative;
   font-family: 'Proxima Nova', sans-serif;
   font-weight: 500;
-  box-shadow: rgba(133, 133, 133, 0.5) 0px 2px 4px 0px;
   transition: 0.1s box-shadow ease-in;
 
   .active & {
-    background-color: ${colors.primary};
+    background-color: ${colors.grey['200']};
 
     & ${Title} {
-      color: ${colors.white}
+      color: ${colors.grey['800']}
     };
     
     & ${DateTitle} {
-      color: ${colors.grey["200"]};
+      color: ${colors.grey["600"]};
     }
   }
 
   &:hover {
-    box-shadow: rgba(133, 133, 133, 0.5) 0px 2px 14px 0px;
+    background-color: ${colors.grey['200']};
   }
 `
