@@ -5,6 +5,10 @@ export const MenuContainer = styled.div`
   display: block;
   width: 280px;
   padding: 40px 0;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `
 export const MenuContent = styled.div`
 

@@ -4,12 +4,13 @@ import {Route, withRouter, Switch} from 'react-router'
 import Header from '../components/Header'
 import Menu from '../components/Menu'
 import EntryView from './EntryView'
+import AppBar from '../components/AppBar'
 
 import {AppContainer, ContentContainer, Main} from '../styled/components'
 
 const AppView = ({match}) => (
   <AppContainer>
-    <Header />
+    <AppBar />
     <ContentContainer>
       <Menu />
       <Main>
