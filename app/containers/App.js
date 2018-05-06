@@ -20,4 +20,4 @@ const AppView = ({match}) => (
   </AppContainer>
 )
 
-export default withRouter(AppView)
+export default AppView
