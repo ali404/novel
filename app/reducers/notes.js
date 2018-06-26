@@ -18,6 +18,7 @@ export default function notesReducer(state = {}, {type, payload}) {
       return {
         ...state,
         [payload.id]: {
+          ...state[payload.id],
           state: payload.state || ""
         }
       }

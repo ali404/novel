@@ -27,9 +27,9 @@ export async function update({id, ...rest}) {
   if(errSave) throw err
 }
 
-export async function saveState({id, editorState}) {
+export async function saveState({id, state}) {
   const [err, note] = await to(storage.getAsync(id))
-  note.state = editorState
+  note.state = state
   const [errSave, _] = await to(storage.setAsync(id, note))
 }
 

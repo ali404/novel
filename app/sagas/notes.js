@@ -7,35 +7,41 @@ import {
   LOAD_NOTE, LOAD_NOTES_META, SET_NOTE, SET_NOTES_META
 } from '../actions'
 
-export function* createNote({id, dateCreated}) {
+export function* createNote({payload: {id, dateCreated}}) {
   yield call(api.notes.create, {id, dateCreated})
 }
 
-export function* saveEditorState({id, editorState}) {
+export function* saveEditorState({payload: {id, editorState}}) {
   yield call(delay, 1000)
   
   const state = yield call(utils.convertTo, editorState)
   yield call(api.notes.saveState, {id, state})
 }
 
-export function* saveEditorTitle({id, editorState}) {
+export function* saveEditorTitle({payload: {id, title}}) {
   yield call(delay, 500)
 
   yield call(api.notes.update, {id, title})
 }
 
-export function* load({id}) {
+export function* load({payload: {id}}) {
   const data = yield call(api.notes.get, {id})
   const editorState = yield call(utils.convertFrom, data.state)
   
+  console.log(data, editorState)
   yield put({
     type: SET_NOTE,
-    payload: {id, editorState}
+    payload: {
+      id, 
+      note: {
+        ...data,
+        state: editorState
+      }
+    }
   })
 }
 
 export function* loadMeta() {
-  console.log(api)
   const notes = yield call(api.notes.getMeta)
   
   yield put({
@@ -45,7 +51,7 @@ export function* loadMeta() {
 }
 
 export function* deleteNote() {
-  // hello world
+  // TODO: implement this
 }
 
 export default function* rootSaga() {

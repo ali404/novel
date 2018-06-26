@@ -10,11 +10,23 @@ export const createNote = () => ({
 })
 
 export const UPDATE_NOTE_TITLE = 'note/update-title'
+export const updateNoteTitle = (id, title) => ({
+  type: UPDATE_NOTE_TITLE,
+  payload: {id, title}
+})
 export const UPDATE_NOTE_STATE = 'note/update-state'
+export const updateNoteState = (id, editorState) => ({
+  type: UPDATE_NOTE_STATE,
+  payload: {id, editorState}
+})
 export const DELETE_NOTE = 'note/delete'
 
 // load initiates get
 export const LOAD_NOTE = 'note/load'
+export const loadNote = (id) => ({
+  type: LOAD_NOTE,
+  payload: {id}
+})
 export const LOAD_NOTES_META = 'note/load-meta'
 export const SET_NOTE = 'note/get'
 export const SET_NOTES_META = 'note/get-meta'

@@ -1,5 +1,6 @@
 import electronStorage from 'electron-json-storage'
 import Promise from 'bluebird'
+import {EditorState, convertToRaw, convertFromRaw} from 'draft-js'
 
 // count words on editor state
 export const countWordsOnEditorState = (editorState) => {
@@ -24,7 +25,7 @@ export const wordCount = (text) => {
 }
 
 // converts to saveable format
-export function convertTo({editorState}) {
+export function convertTo(editorState) {
   const state = JSON.stringify(convertToRaw(
     editorState.getCurrentContent()
   ))
@@ -33,7 +34,7 @@ export function convertTo({editorState}) {
 }
 
 // converts from saveable format
-export function convertFrom({editorState}) {
+export function convertFrom(editorState) {
   let state
   try {
     state = EditorState.createWithContent(convertFromRaw(
@@ -43,6 +44,8 @@ export function convertFrom({editorState}) {
   catch(err) {
     state = EditorState.createEmpty()
   }
+
+  return state
 }
 
 export const storage = Promise.promisifyAll(electronStorage)

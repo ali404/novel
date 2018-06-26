@@ -6,11 +6,12 @@ import Note from '../components/Note'
 
 import * as actions from '../actions'
 
-const EntryView = ({match, entries, actions, settings}) => {
+const EntryView = ({match, notes, notesMeta, actions, settings}) => {
   const id = match.params.id
   return React.cloneElement(
     <Note
-      entry={entries[id]}
+      note={notes[id]}
+      notesMeta={notesMeta}
       actions={actions}
       id={match.params.id}
       settings={settings}
@@ -20,7 +21,8 @@ const EntryView = ({match, entries, actions, settings}) => {
 }
 
 const mapStateToProps = state => ({
-  entries: state.entries,
+  notes: state.notes,
+  notesMeta: state.notesMeta,
   settings: state.settings
 })
 

@@ -29,13 +29,6 @@ export default class NoteEditor extends Component {
       editorState
     }, () => {
       this.props.onChange(editorState)
-      // if(_.isEqual(
-      //     convertToRaw(lastState.getCurrentContent()),
-      //     convertToRaw(editorState.getCurrentContent())
-      //   )
-      // ) {
-      //   this.props.onChange(editorState)
-      // }
     })
   }
 

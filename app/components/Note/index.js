@@ -5,13 +5,13 @@ import NoteTitle from './NoteTitle'
 import NoteEditor from './NoteEditor'
 import NoteInfo from '../NoteInfo'
 
-import {EditorState, convertFromRaw, convertToRaw, ContentState} from 'draft-js'
+import {EditorState} from 'draft-js'
 
 export default class Note extends Component {
   constructor(props) {
     super(props)
 
-    if(this.props.entry) {
+    if(this.props.note) {
       this.state = this._setState(this.props)
     }
   }
@@ -21,8 +21,8 @@ export default class Note extends Component {
   }
 
   componentWillMount() {
-    if(!this.props.entry) {
-      this.props.actions.loadEntryState(this.props.id)
+    if(!this.props.note) {
+      this.props.actions.loadNote(this.props.id)
     }
   }
 
@@ -35,10 +35,10 @@ export default class Note extends Component {
       return editorState
     }
 
-    if(props.entry) {
-      const entryState = setEditorState(props.entry.state)
+    if(props.note) {
+      const entryState = setEditorState(props.note.state)
       return {
-        title: props.entry.title,
+        title: props.note.title,
         entryState: entryState,
         initialEditorState: entryState,
         throttled_save: this._returnThrottled()
@@ -51,16 +51,16 @@ export default class Note extends Component {
 
   _returnThrottled() {
     return _.debounce(() => {
-      this.props.actions.saveEditorState(
-        this.props.entry.id,
+      this.props.actions.updateNoteState(
+        this.props.note.id,
         this.state.entryState
       )
     }, 1000)
   }
 
   _saveTitle = (title) => {
-    this.props.actions.updateEntryTitle(
-      this.props.entry.id,
+    this.props.actions.updateNoteTitle(
+      this.props.note.id,
       title
     )
 
@@ -75,7 +75,7 @@ export default class Note extends Component {
 
   render() {
     // entry will be null if the entry is not in localstore
-    if(!this.props.entry) {
+    if(!this.props.note) {
       return null
     }
     else {
@@ -90,10 +90,10 @@ export default class Note extends Component {
             initialEditorState={this.state.initialEditorState}
             settings={this.props.settings}
             actions={this.props.actions}
-            entry={this.props.entry}
+            entry={this.props.note}
           />
           {this.props.settings.infoOpen ? (
-            <NoteInfo actions={this.props.actions} note={this.props.entry} />
+            <NoteInfo actions={this.props.actions} entry={this.props.note} />
           ) : null}
         </div>
       )
