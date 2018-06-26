@@ -1,4 +1,14 @@
+import v4 from 'uuid/v4'
+
 export const CREATE_NOTE = 'note/create'
+export const createNote = () => ({
+  type: CREATE_NOTE,
+  payload: {
+    id: v4(),
+    dateCreated: new Date()
+  }
+})
+
 export const UPDATE_NOTE_TITLE = 'note/update-title'
 export const UPDATE_NOTE_STATE = 'note/update-state'
 export const DELETE_NOTE = 'note/delete'

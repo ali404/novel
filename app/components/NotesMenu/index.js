@@ -8,12 +8,13 @@ import NoteList from '../NoteList'
 import withResource from '../../hocs/withResource'
 import {NotesMenuStyle, MenuItemAdd} from './style'
 import MdAdd from 'react-icons/lib/md/add'
+import * as actions from '../../actions'
 
 const Notes = withRouter(NoteList)
 
-const AddNote = ({actions}) => {
+const AddNote = ({addNote}) => {
   return (
-    <MenuItemAdd onClick={_ => actions.addEntry(uuidv4(), new Date())}>
+    <MenuItemAdd onClick={_ => addNote}>
       Add a new note
       <MdAdd />
     </MenuItemAdd>
@@ -23,8 +24,8 @@ const AddNote = ({actions}) => {
 class NotesMenu extends Component {
   render() {
     return (
-      <NotesMenuStyle open={this.props.settings.menuOpen}>
-        <AddNote actions={this.props.actions} />
+      <NotesMenuStyle open={this.props.settings.menu.open}>
+        <AddNote addNote={ev => this.props.createNote} />
         <Notes />
       </NotesMenuStyle>
     )

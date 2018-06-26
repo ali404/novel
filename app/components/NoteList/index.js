@@ -53,7 +53,7 @@ const NoteList = ({notes, match}) => {
 }
 
 const bindStateToProps = state => ({
-  notes: state.entryTitles
+  notes: state.notesMeta
 })
 
 export default connect(bindStateToProps, null, null, {
