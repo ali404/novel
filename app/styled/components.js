@@ -10,6 +10,10 @@ export const AppContainer = styled.div`
   background-color: ${colors.white}
 `
 
+export const Content = styled.div`
+
+`
+
 export const ContentContainer = styled.div`
   display: flex;
   padding: 0;
