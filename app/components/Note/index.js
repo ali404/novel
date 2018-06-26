@@ -38,10 +38,9 @@ export default class Note extends Component {
     if(props.note) {
       const entryState = setEditorState(props.note.state)
       return {
-        title: props.note.title,
+        title: props.noteMeta.title,
         entryState: entryState,
-        initialEditorState: entryState,
-        throttled_save: this._returnThrottled()
+        initialEditorState: entryState
       }
     }
     else {
@@ -49,28 +48,22 @@ export default class Note extends Component {
     }
   }
 
-  _returnThrottled() {
-    return _.debounce(() => {
-      this.props.actions.updateNoteState(
-        this.props.note.id,
-        this.state.entryState
-      )
-    }, 1000)
-  }
-
   _saveTitle = (title) => {
-    this.props.actions.updateNoteTitle(
-      this.props.note.id,
-      title
-    )
-
-    this.setState({title})
-    this.state.throttled_save()
+    this.setState({title}, () => {
+      this.props.actions.updateNoteTitle(
+        this.props.noteMeta.id,
+        title
+      )
+    })
   }
 
   _saveEditorState = (entryState) => {
-    this.setState({entryState})
-    this.state.throttled_save()
+    this.setState({entryState}, () => {
+      this.props.actions.updateNoteState(
+        this.props.id,
+        this.state.entryState
+      )
+    })
   }
 
   render() {

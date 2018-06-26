@@ -14,7 +14,9 @@ const Notes = withRouter(NoteList)
 
 const AddNote = ({addNote}) => {
   return (
-    <MenuItemAdd onClick={_ => addNote}>
+    <MenuItemAdd onClick={_ => {
+      addNote()
+    }}>
       Add a new note
       <MdAdd />
     </MenuItemAdd>
@@ -25,7 +27,7 @@ class NotesMenu extends Component {
   render() {
     return (
       <NotesMenuStyle open={this.props.settings.menu.open}>
-        <AddNote addNote={ev => this.props.createNote} />
+        <AddNote addNote={this.props.actions.createNote} />
         <Notes />
       </NotesMenuStyle>
     )

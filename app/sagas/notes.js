@@ -13,22 +13,23 @@ export function* createNote({payload: {id, dateCreated}}) {
 
 export function* saveEditorState({payload: {id, editorState}}) {
   yield call(delay, 1000)
-  
+
   const state = yield call(utils.convertTo, editorState)
   yield call(api.notes.saveState, {id, state})
+  yield put({type: 'SYNC_EDITOR_STATE'})
 }
 
 export function* saveEditorTitle({payload: {id, title}}) {
   yield call(delay, 500)
-
+  
   yield call(api.notes.update, {id, title})
+  yield put({type: 'SYNC_EDITOR_TITLE'})
 }
 
 export function* load({payload: {id}}) {
   const data = yield call(api.notes.get, {id})
   const editorState = yield call(utils.convertFrom, data.state)
-  
-  console.log(data, editorState)
+
   yield put({
     type: SET_NOTE,
     payload: {
@@ -50,8 +51,8 @@ export function* loadMeta() {
   })
 }
 
-export function* deleteNote() {
-  // TODO: implement this
+export function* deleteNote({payload: {id}}) {
+  yield call(api.notes.del, {id})
 }
 
 export default function* rootSaga() {

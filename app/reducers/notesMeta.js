@@ -23,7 +23,7 @@ export default function notesMetaReducer(state = {}, {type, payload}) {
         ...state,
         [payload.id]: {
           ...state[payload.id],
-          title: payload.title || state[payload.id].title
+          title: payload.title
         }
       }
     

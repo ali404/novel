@@ -20,6 +20,10 @@ export const updateNoteState = (id, editorState) => ({
   payload: {id, editorState}
 })
 export const DELETE_NOTE = 'note/delete'
+export const deleteNote = (id) => ({
+  type: DELETE_NOTE,
+  payload: {id}
+})
 
 // load initiates get
 export const LOAD_NOTE = 'note/load'

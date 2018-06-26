@@ -8,10 +8,12 @@ import * as actions from '../actions'
 
 const EntryView = ({match, notes, notesMeta, actions, settings}) => {
   const id = match.params.id
+  const noteMeta = notesMeta[id]
+  console.log(noteMeta)
   return React.cloneElement(
     <Note
       note={notes[id]}
-      notesMeta={notesMeta}
+      noteMeta={noteMeta}
       actions={actions}
       id={match.params.id}
       settings={settings}

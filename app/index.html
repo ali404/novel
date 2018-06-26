@@ -28,71 +28,6 @@
 
         --grey-200-transparent: rgba(238, 238, 238, 0.98);
       }
-
-      /* reset */
-      html {
-        width: 100%;
-        height: 100%;
-      }
-
-      body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      #novel-app {
-        height: 100%;
-      }
-
-      #draggable {
-        -webkit-app-region: drag;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 40px;
-        width: 100%;
-      }
-
-      /* app specific */
-
-      .app {
-        height: 100vh;
-        display: flex;
-      }
-
-      .contents {
-        flex-grow: 5;
-        max-width: 620px;
-        background-color: #ffffff;
-        padding-top: 60px;
-        padding-left: 36px;
-        padding-right: 40px;
-        padding-bottom: 200px;
-        overflow: auto;
-      }
-
-      /******** EDITOR TITLE ********/
-
-      .entry-title {
-        background-color: transparent;
-        font-family: 'Avenir';
-        font-weight: 500;
-        font-size: 32px;
-        width: 100%;
-        border: none;
-        margin-bottom: 20px;
-        letter-spacing: -0.5px;
-      }
-
-      .entry-title:focus {
-        outline: none;
-      }
-
       /******* EDITOR *******/
 
       .DraftEditor-root {
@@ -107,54 +42,6 @@
         letter-spacing: 0.1px;
         line-height: 1.5;
       }
-
-      /******* EDITOR INFO *******/
-      .info {
-        width: 100%;
-        box-sizing: border-box;
-        margin-bottom: 16px;
-        border-radius: 2px;
-        padding: 12px;
-      }
-
-      .info[data-active="true"] {
-        background-color: var(--grey-100);
-      }
-
-      .info::after, .info::before {
-        display: table;
-        clear: both;
-        content: " ";
-      }
-
-      .info-icon {
-        color: var(--grey-600);
-        font-size: 24px;
-        float: right;
-      }
-
-      .info-icon:hover {
-        cursor: pointer;
-      }
-
-      .info-data {
-        padding-top: 20px;
-        padding-bottom: 16px;
-      }
-
-      .info-data[data-active="false"] {
-        display: none;
-      }
-
-      .info-delete {
-        float: right;
-        margin-top: -32px;
-      }
-
-      .info-delete[data-active="false"] {
-        display: none;
-      }
-
     </style>
   </head>
   <body>
