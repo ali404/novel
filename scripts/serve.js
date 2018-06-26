@@ -31,7 +31,8 @@ bsync.init({
 }, (err, bs) => {
   if (err) return console.error(err);
 
-  const child = spawn(electron, ['.', '--enable-logging'], {
+  // could spah with '--enable-logging'
+  const child = spawn(electron, ['.'], {
     env: {
       ...{
         NODE_ENV: 'development',
