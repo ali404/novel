@@ -3,15 +3,15 @@ import { routerMiddleware, routerReducer as routing, push } from 'react-router-r
 import persistState from 'redux-localstorage'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
 
-// import user from './reducers/user';
-// import userActions from './actions/user';
-
-import entries from './reducers/entries'
-import entryTitles from './reducers/entryTitles'
-import settings from './reducers/settings'
-import notebooks from './reducers/notebooks'
 import * as actions from './actions'
+import reducers, {persistedReducers} from './reducers'
+import rootSaga from './sagas'
+
+const sagas = [
+  ...rootSaga
+]
 
 export default function configureStore(initialState, routerHistory) {
   const router = routerMiddleware(routerHistory);
@@ -21,15 +21,8 @@ export default function configureStore(initialState, routerHistory) {
     push
   };
 
-  const reducers = {
-    entries,
-    entryTitles,
-    settings,
-    notebooks,
-    routing
-  };
-
-  const middlewares = [ thunk, router, logger ];
+  const sagaMiddleware = createSagaMiddleware()
+  const middlewares = [ sagaMiddleware, router, logger ];
 
   const composeEnhancers = (() => {
     const compose_ = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
@@ -39,8 +32,18 @@ export default function configureStore(initialState, routerHistory) {
     return compose;
   })();
 
-  const enhancer = composeEnhancers(applyMiddleware(...middlewares), persistState(["entryTitles", "settings", "routing", "notebooks"]));
-  const rootReducer = combineReducers(reducers);
+  const enhancer = composeEnhancers(
+    applyMiddleware(...middlewares), 
+    persistState([...persistedReducers, "routing"])
+  );
+  
+  const rootReducer = combineReducers({
+    ...reducers,
+    routing
+  })
 
-  return createStore(rootReducer, initialState, enhancer);
+  const store = createStore(rootReducer, initialState, enhancer)
+  sagas.forEach(saga => sagaMiddleware.run(saga))  
+  
+  return store
 }

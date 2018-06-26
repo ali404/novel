@@ -1,21 +1,17 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import * as actions from '../../actions'
 
+import {TOGGLE_MENU} from '../../actions'
 import {AppBarContainer, Logo} from './style'
 
-const AppBar = ({actions}) => {
+const AppBar = ({dispatch}) => {
   return <AppBarContainer>
     {/* Here should be the os action buttons */}
-    <Logo onClick={actions.toggleMenu}/>
+    <Logo onClick={ev => dispatch({type: TOGGLE_MENU})}/>
   </AppBarContainer>
 }
 
-const bindStateToProps = state => ({})
-
-const bindDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch) 
-})
+const bindDispatchToProps = dispatch => ({dispatch})
 
 export default connect(null, bindDispatchToProps)(AppBar)

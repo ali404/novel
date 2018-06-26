@@ -1,84 +1,10 @@
-import storage from 'electron-json-storage'
-
-// saves an entry to the filesystem
-// only saves the minimal data (title, id, dateCreated)
-export const saveEntryToFilesystem = (id, dateCreated) => {
-  storage.get("entries", (error, data) => {
-    if(error) throw error
-
-    data[id] = {
-      id: id,
-      dateCreated: dateCreated,
-      title: ""
-    }
-
-    storage.set("entries", data, (error) => {
-      if(error) throw error
-    })
-  })
-}
-
-// update the title of an entry
-export const updateTitle = (id, title) => {
-  storage.get("entries", (error, data) => {
-    if(error) throw error
-
-    data[id].title = title
-
-    storage.set("entries", data, (error) => {
-      if(error) throw error
-    })
-  })
-
-  storage.get(id, (error, data) => {
-    if(error) throw error
-
-    data.title = title
-    storage.set(id, data)
-  })
-}
-
-// save the state of an entry to the filesystem
-export const saveState = (id, dataState) => {
-  storage.set(id, dataState, (error) => {
-    if(error) throw error
-  })
-}
-
-// loads all entries (just the title and the dateCreated) from the filesystem
-export const loadEntries = (callback) => {
-  storage.get("entries", (error, data) => {
-    if(error) throw error
-
-    callback.call(this, data)
-  })
-}
-
-// loads an entry from filesystem
-export const loadEntry = (id, callback) => {
-  storage.get(id, (error, data) => {
-    if(error) throw error
-    callback.call(this, data)
-  })
-}
-
-// delete an entry from the filesystem
-export const deleteEntryFromFilesystem = (id, callback) => {
-  storage.get("entries", (error, data) => {
-    if(error) throw error
-
-    delete data[id]
-
-    storage.remove(id)
-    storage.set("entries", data, callback)
-  })
-}
+import electronStorage from 'electron-json-storage'
+import Promise from 'bluebird'
 
 // count words on editor state
 export const countWordsOnEditorState = (editorState) => {
   let numOfWords = 0
   try {
-    console.log(editorState)
     editorState.blocks.forEach(block => {
       numOfWords += wordCount(block.text)
     })
@@ -97,17 +23,26 @@ export const wordCount = (text) => {
   return wordCount
 }
 
-export const saveNotebook = (id, title, dateCreated) => {
-  storage.get("notebooks", (error, data) => {
-    data[id] = {
-      id: id,
-      title: title,
-      entryCount: 0
-    }
+// converts to saveable format
+export function convertTo({editorState}) {
+  const state = JSON.stringify(convertToRaw(
+    editorState.getCurrentContent()
+  ))
 
-    storage.set("notebooks", data, (error) => {
-      if(error) throw error;
-    })
-  })
-
+  return state
 }
+
+// converts from saveable format
+export function convertFrom({editorState}) {
+  let state
+  try {
+    state = EditorState.createWithContent(convertFromRaw(
+      JSON.parse(editorState)
+    ))
+  }
+  catch(err) {
+    state = EditorState.createEmpty()
+  }
+}
+
+export const storage = Promise.promisifyAll(electronStorage)

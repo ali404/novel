@@ -3,7 +3,9 @@ import {colors} from '../../styled/constants'
 
 export const MenuContainer = styled.div`
   display: ${props => props.active ? 'block' : 'none'};
-  width: 220px;
+  flex: 0 0 220px;
+  height: 90vh;
+  overflow-y: scroll;
   flex-shrink: 0;
   box-sizing: border-box;
   padding: 0;

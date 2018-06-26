@@ -1,19 +1,27 @@
+import {TOGGLE_MENU, TOGGLE_NOTE_BAR} from '../actions'
+
 const defaultState = {
-  menuOpen: true,
-  infoOpen: false
+  menu: {open: true,},
+  noteBar: {open: false}
 }
 
-export default function settings(state = defaultState, action) {
-  switch(action.type) {
-    case 'TOGGLE_MENU':
+export const settingsPersist = true
+
+export default function settings(state = defaultState, {type, payload}) {
+  switch(type) {
+    case TOGGLE_MENU:
       return {
         ...state,
-        menuOpen: !state.menuOpen
+        menu: {
+          open: !state.menu.open
+        }
       }
-    case 'TOGGLE_INFO':
+    case TOGGLE_NOTE_BAR:
       return {
         ...state,
-        infoOpen: !state.infoOpen
+        noteBar: {
+          open: !state.noteBar.open
+        }
       }
     default:
       return state

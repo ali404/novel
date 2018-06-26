@@ -14,7 +14,7 @@ class Menu extends Component {
   }
 
   render() {
-    return <MenuContainer active={this.props.settings.menuOpen}>
+    return <MenuContainer active={this.props.settings.menu.open}>
       <MenuTabs>
         <MenuTab 
           onClick={ev => {
