@@ -1,6 +1,6 @@
 import React from 'react'
 
 const Challenges = () => {
-  return <p>Hello World</p>
+  return <p>Challenges</p>
 }
 export default Challenges

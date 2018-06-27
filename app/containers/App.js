@@ -1,7 +1,6 @@
 import React from 'react'
 import {Route} from 'react-router'
 
-import Menu from '../components/Menu'
 import EntryView from './EntryView'
 import AppBar from '../components/AppBar'
 import MenuBar from '../components/MenuBar'
@@ -16,9 +15,8 @@ const AppView = ({match}) => (
     <AppBar />
     <Content>
       <MenuBar />
-      <Route path="/notes" component={NotesMenu} />
+      {/* <Route path="/notes" component={NotesMenu} /> */}
       <ContentContainer>
-        <Menu />
         <Main>
           {/* <Route exact path="/notes/:id" component={InfoView} /> */}
           <Route exact path="/notes/:id" component={EntryView} />

@@ -8,7 +8,7 @@ import {AppBarContainer, Logo} from './style'
 const AppBar = ({dispatch}) => {
   return <AppBarContainer>
     {/* Here should be the os action buttons */}
-    <Logo onClick={ev => dispatch({type: TOGGLE_MENU})}/>
+    {/* <Logo onClick={ev => dispatch({type: TOGGLE_MENU})}/> */}
   </AppBarContainer>
 }
 

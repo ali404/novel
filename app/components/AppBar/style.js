@@ -14,8 +14,8 @@ export const AppBarContainer = styled.div`
   width: 100%;
   padding: 0px 20px 0px 80px;
   box-sizing: border-box;
-  background-color: ${colors['grey']['200']};
-  border-bottom: 1px solid ${colors['grey']['300']};
+  background: linear-gradient(#2D2D2D, #232323);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
 `
 
 export const Logo = styled(LogoSvg)`

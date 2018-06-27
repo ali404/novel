@@ -1,6 +1,6 @@
 import React from 'react'
 
 const Settings = () => {
-  return <p>Hello World</p>
+  return <p>Settings</p>
 }
 export default Settings
