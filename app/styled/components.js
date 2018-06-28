@@ -3,17 +3,20 @@ import {colors} from './constants'
 
 export const AppContainer = styled.div`
   padding: 0;
-  display: block;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   box-sizing: border-box;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
 `
 
 export const Content = styled.div`
   display: flex;
-  height: 100vh;
   align-items: row;
   margin-top: 40px;
+  background: #141414;
 `
 
 export const ContentContainer = styled.div`

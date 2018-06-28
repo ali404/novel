@@ -1,8 +1,9 @@
 import React from 'react'
+import {NoteTitleStyle} from './style'
 
 const NoteTitle = ({title, onChange}) => {
   return (
-    <input
+    <NoteTitleStyle
       type="text"
       value={title}
       placeholder="Title"

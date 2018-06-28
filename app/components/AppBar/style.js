@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {colors} from '../../styled/constants'
-import LogoSvg from '../Header/logo.svg'
+import LogoSvg from './logo.svg'
 
 export const AppBarContainer = styled.div`
   position: fixed;

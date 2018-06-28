@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 export const MenuContainer = styled.div`
   display: flex;
@@ -18,15 +18,15 @@ export const MenuList = styled.ul`
 
 export const MenuListItem = styled.li`
   margin: 10px 0;
-`
 
-export const MenuItem = styled(Link)`
-  &.active svg {
+  & .active svg {
     color: #fafafa;
   }
+`
 
+export const MenuItem = styled(NavLink)`
   & svg {
-    font-size: 30px;
+    font-size: 28px;
     color: #2d2d2d
   }
 `

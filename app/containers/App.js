@@ -4,7 +4,7 @@ import {Route} from 'react-router'
 import EntryView from './EntryView'
 import AppBar from '../components/AppBar'
 import MenuBar from '../components/MenuBar'
-import NotesMenu from '../components/NotesMenu'
+import NotesBar from '../components/NotesBar'
 import Challenges from '../components/Challenges'
 import Settings from '../components/Settings'
 
@@ -15,8 +15,8 @@ const AppView = ({match}) => (
     <AppBar />
     <Content>
       <MenuBar />
-      {/* <Route path="/notes" component={NotesMenu} /> */}
       <ContentContainer>
+        <Route path="/notes" component={NotesBar} />
         <Main>
           {/* <Route exact path="/notes/:id" component={InfoView} /> */}
           <Route exact path="/notes/:id" component={EntryView} />

@@ -3,7 +3,6 @@ import {MenuItem as Item} from '../NoteList/style'
 import {colors} from '../../styled/constants'
 
 export const NotesMenuStyle = styled.ul`
-  overflow-y: scroll;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -28,5 +27,4 @@ export const MenuItem = Item.extend`
 export const MenuItemAdd = MenuItem.extend`
   font-size: 12px;
   padding: 16px;
-  border-top: 1px solid ${colors.grey['200']};
 `

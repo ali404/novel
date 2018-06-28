@@ -27,7 +27,7 @@ class NotesMenu extends Component {
   render() {
     return (
       <NotesMenuStyle open={this.props.settings.menu.open}>
-        <AddNote addNote={this.props.actions.createNote} />
+        {/* <AddNote addNote={this.props.actions.createNote} /> */}
         <Notes />
       </NotesMenuStyle>
     )

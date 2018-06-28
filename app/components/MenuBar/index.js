@@ -6,16 +6,24 @@ const MenuBar = () => {
   return <MenuContainer>
     <MenuList>
       <MenuListItem>
-        <MenuItem to="/notes"><MdEdit /></MenuItem>
+        <MenuItem to="/notes" activeClassName="active">
+          <MdEdit />
+        </MenuItem>
       </MenuListItem>
       <MenuListItem>
-        <MenuItem to="/notebooks"><MdFolderOpen /></MenuItem>
+        <MenuItem to="/notebooks" activeClassName="active">
+          <MdFolderOpen />
+        </MenuItem>
       </MenuListItem>
       <MenuListItem>
-        <MenuItem to="/challenges"><MdWhatshot /></MenuItem>
+        <MenuItem to="/challenges" activeClassName="active">
+          <MdWhatshot />
+        </MenuItem>
       </MenuListItem>
       <MenuListItem>
-        <MenuItem to="/settings"><MdSettings /></MenuItem>
+        <MenuItem to="/settings" activeClassName="active">
+          <MdSettings />
+        </MenuItem>
       </MenuListItem>
     </MenuList>
   </MenuContainer>
