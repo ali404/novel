@@ -36,6 +36,10 @@ export const SET_NOTE = 'note/get'
 export const SET_NOTES_META = 'note/get-meta'
 
 export const ADD_NOTEBOOK = 'notebook/add'
+export const addNotebook = title => ({
+  type: ADD_NOTEBOOK,
+  payload: {title}
+})
 export const RENAME_NOTEBOOK = 'notebook/rename'
 export const SET_DEFAULT_NOTEBOOK = 'notebook/set-default'
 

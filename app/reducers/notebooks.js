@@ -1,12 +1,12 @@
 import {ADD_NOTEBOOK, SET_DEFAULT_NOTEBOOK} from '../actions'
 
 const defaultState = {
-  default: 'Inbox',
+  defaultNotebook: 'Inbox',
   'Inbox': {
     id: 'Inbox',
     title: 'Inbox',
-    dateCreated: '0',
-    entryCount: 0
+    dateCreated: new Date(),
+    notesCount: 0,
   }
 }
 
@@ -28,7 +28,7 @@ export default function notebooksReducer(state = defaultState, {type, payload}) 
     case SET_DEFAULT_NOTEBOOK:
       return {
         ...state,
-        default: payload.id
+        defaultNotebook: payload.id
       }
     
     default:
