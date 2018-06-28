@@ -20,7 +20,7 @@ const shouldPersist = {
   settings: settingsPersist
 }
 
-export const persistedReducers = _.map(reducers, (id, reducer) => {
+export const persistedReducers = _.map(reducers, (reducer, id) => {
   return id
 }).filter(id => shouldPersist[id])
 
