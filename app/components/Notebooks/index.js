@@ -1,6 +1,8 @@
 import React from 'react'
 
+import {PageTitle} from '../../styled/components'
+
 const Notebooks = () => {
-  return <p>Notebooks</p>
+  return <PageTitle>Notebooks</PageTitle>
 }
 export default Notebooks

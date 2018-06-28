@@ -37,3 +37,12 @@ export const Main = styled.div`
   padding-bottom: 200px;
   overflow: auto;
 `
+
+export const PageTitle = styled.h1`
+  padding: 0;
+  margin: 0;
+  font-family: 'Proxima Nova';
+  font-size: 20pt;
+  font-weight: 400;
+  color: #fafafa;
+`

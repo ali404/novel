@@ -1,6 +1,8 @@
 import React from 'react'
 
+import {PageTitle} from '../../styled/components'
+
 const Challenges = () => {
-  return <p>Challenges</p>
+  return <PageTitle>Challenges</PageTitle>
 }
 export default Challenges
