@@ -3,14 +3,13 @@ import {colors} from '../../styled/constants'
 import LogoSvg from './logo.svg'
 
 export const AppBarContainer = styled.div`
-  position: fixed;
   z-index: 999;
+  flex: 0 0 40px;
   -webkit-app-region: drag;
   display: flex;
   align-items: row;
   top: 0;
   left: 0;
-  height: 40px;
   width: 100%;
   padding: 0px 20px 0px 80px;
   box-sizing: border-box;

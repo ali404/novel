@@ -11,7 +11,9 @@ export const NoteBarContainer = styled.div`
 
 export const Notebook = styled.div`
   font-family: 'Proxima Nova';
-  font-size: 28px;
+  font-size: 20pt;
+  font-weight: 100;
+  letter-spacing: 0.2px;
   color: #FAFAFA;
-  margin-bottom: 40px;
+  margin-bottom: 36pt;
 `

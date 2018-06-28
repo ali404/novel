@@ -15,7 +15,7 @@ export const AppContainer = styled.div`
 export const Content = styled.div`
   display: flex;
   align-items: row;
-  margin-top: 40px;
+  flex-grow: 1;
   background: #141414;
 `
 

@@ -6,7 +6,8 @@ import {NoteBarContainer, Notebook} from './style'
 
 const NotesBar = ({notebooks, notesMeta}) => (
   <NoteBarContainer>
-    <Notebook>{notebooks.default}</Notebook>
+    {/* <Notebook>{notebooks.default}</Notebook> */}
+    <Notebook>Notes</Notebook>
     <NotesMenu />
   </NoteBarContainer>
 )
