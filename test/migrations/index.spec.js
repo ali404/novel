@@ -49,5 +49,11 @@ describe('Migrations', () => {
       path.should.be.a('array')
       path.should.deep.equal([])
     })
+
+    it('should return empty array for same start and ending node',  () => {
+      const path = findPath(migrations2, '0.2.2', '0.2.2')
+      path.should.be.a('array')
+      path.should.deep.equal([])
+    })
   })
 })

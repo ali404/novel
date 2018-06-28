@@ -57,6 +57,6 @@ export default async function migrate() {
 
   const path = findPath(migrations, currentVersion, ownVersion)
   for(let p of path) {
-    await migrations[p].call(this)
+    await migrations[p]()
   }
 }

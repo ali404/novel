@@ -15,7 +15,7 @@ export default async function v011v021() {
 
   const notesCount = _.size(notesMeta)
 
-  await to(storage.setAsync('notes'))
+  await to(storage.setAsync('notes', notesMeta))
   
   const notebooks = {
     defaultNotebook: 'Inbox',
