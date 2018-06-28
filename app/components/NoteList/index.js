@@ -1,8 +1,8 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {NavLink} from 'react-router-dom'
-import {withRouter} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
+import moment from 'moment'
 
 import {Title, DateTitle, NotesMenu, MenuItem} from './style'
 
@@ -25,15 +25,7 @@ const NoteList = ({notes, match}) => {
   for(let id in keysSorted) {
     let note = notes[keysSorted[id]]
     let title = note.title === "" ? "Untitled" : note.title
-    let dateString
-
-    if(typeof note.dateCreated === 'string') {
-      dateString = new Date(note.dateCreated)
-      dateString = dateString.toDateString()
-    }
-    else {
-      dateString = note.dateCreated.toDateString()
-    }
+    const dateString = moment(note.dateCreated).format('Do of MMMM')
 
     notesList.push((
       <NavLink

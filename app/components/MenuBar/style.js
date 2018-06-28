@@ -26,7 +26,7 @@ export const MenuListItem = styled.li`
 
 export const MenuItem = styled(NavLink)`
   & svg {
-    font-size: 26px;
+    font-size: 24px;
     color: #2d2d2d
   }
 `

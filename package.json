@@ -20,6 +20,7 @@
     "electron-json-storage": "^4.0.2",
     "history": "^4.6.3",
     "lodash": "^4.17.10",
+    "moment": "^2.22.2",
     "prop-types": "^15.5.10",
     "radium": "^0.19.6",
     "react": "^16.2.0",
