@@ -15,6 +15,7 @@ export default function notesMetaReducer(state = {}, {type, payload}) {
           id: payload.id,
           title: payload.title || '',
           dateCreated: payload.dateCreated,
+          notebook: payload.notebook
         }
       }
     
