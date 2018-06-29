@@ -1,4 +1,4 @@
-import {ADD_NOTEBOOK, SET_DEFAULT_NOTEBOOK} from '../actions'
+import {ADD_NOTEBOOK, SET_DEFAULT_NOTEBOOK, SET_NOTEBOOKS} from '../actions'
 
 const defaultState = {
   defaultNotebook: 'Inbox',
@@ -14,6 +14,9 @@ export const notebooksPersist = true
 
 export default function notebooksReducer(state = defaultState, {type, payload}) {
   switch(type) {
+    case SET_NOTEBOOKS:
+      return payload.notebooks
+    
     case ADD_NOTEBOOK:
       return {
         ...state,

@@ -41,10 +41,20 @@ export const SET_NOTES_META = 'note/get-meta'
 export const ADD_NOTEBOOK = 'notebook/add'
 export const addNotebook = title => ({
   type: ADD_NOTEBOOK,
-  payload: {title}
+  payload: {
+    title,
+    id: v4(),
+    dateCreated: new Date()
+  }
 })
 export const RENAME_NOTEBOOK = 'notebook/rename'
 export const SET_DEFAULT_NOTEBOOK = 'notebook/set-default'
+
+export const LOAD_NOTEBOOKS = 'notebooks/load'
+export const loadNotebooks = () => ({
+  type: LOAD_NOTEBOOKS
+})
+export const SET_NOTEBOOKS = 'notebooks/set'
 
 export const TOGGLE_MENU = 'menu/toggle'
 export const TOGGLE_NOTE_BAR = 'note-bar/toggle'

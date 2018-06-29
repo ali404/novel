@@ -5,7 +5,7 @@ export async function save({id, title, dateCreated}) {
   const [err, notebooks] = await to(storage.getAsync('notebooks'))
 
   notebooks[id] = {
-    id, title, dateCreated, entryCount: 0
+    id, title, dateCreated, notesCount: 0
   }
 
   const [errSave, _] = await to(storage.setAsync('notebooks', notebooks))
@@ -31,4 +31,6 @@ export async function rename({id, title}) {
 
 export async function fetchAll() {
   const [err, notebooks] = await to(storage.getAsync('notebooks'))
+
+  return notebooks
 }
