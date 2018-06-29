@@ -1,6 +1,6 @@
 {
   "name": "novel",
-  "version": "0.2.20",
+  "version": "0.2.3",
   "description": "Novel app",
   "main": "init.js",
   "author": {
