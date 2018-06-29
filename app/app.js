@@ -9,7 +9,16 @@ import {LOAD_NOTES_META, STARTUP} from './actions'
 
 import configureStore from './store';
 
-console.log(process.env.REACT_VERSION)
+// if (process.env.NODE_ENV !== 'production') {
+//   const {whyDidYouUpdate} = require('why-did-you-update');
+//   whyDidYouUpdate(React, {
+//     exclude: [
+//       // React Router
+//       /^Route/,
+//     ]
+//   })
+// }
+
 
 const syncHistoryWithStore = (store, history) => {
   const { routing } = store.getState();

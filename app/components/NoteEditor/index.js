@@ -62,6 +62,4 @@ const bindDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(bindStateToProps, bindDispatchToProps, null, {
-  pure: false
-})(NoteEditor)
+export default connect(bindStateToProps, bindDispatchToProps)(NoteEditor)

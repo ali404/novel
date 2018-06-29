@@ -48,6 +48,4 @@ const bindStateToProps = state => ({
   notes: state.notesMeta
 })
 
-export default connect(bindStateToProps, null, null, {
-  pure: false
-})(NoteList)
+export default withRouter(connect(bindStateToProps, null, null)(NoteList))

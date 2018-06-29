@@ -1,6 +1,5 @@
 import React from 'react'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 import NoteTitle from '../NoteTitle'
 import NoteEditor from '../NoteEditor'
@@ -19,6 +18,4 @@ const Note = ({match}) => {
 
 const bindStateToProps = state => ({})
 
-export default connect(bindStateToProps, null, null, {
-  pure: false
-})(Note)
+export default withRouter(Note)

@@ -6,11 +6,8 @@ import * as actions from '../../actions'
 import {NoteTitleStyle} from './style'
 
 const NoteTitle = ({notesMeta, id, actions}) => {
-  let title = notesMeta[id] && notesMeta[id].title
-  console.log(title)
-  if(!title) {
-    title = ''
-  }
+  let title = (notesMeta[id] && notesMeta[id].title) || ''
+  
   return <NoteTitleStyle
     type="text"
     value={title}

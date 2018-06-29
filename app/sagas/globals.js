@@ -6,13 +6,14 @@ import moment from 'moment'
 import {willMigrate} from '../utils'
 
 export function* waitFor() {
-  const willMigrate = yield call(willMigrate)
+  const diffVersions = yield call(willMigrate)
   
-  if(willMigrate) {
+  if(diffVersions) {
+    console.warn(1)
     yield all([call(migrate), call(delay, 1500)])  
   }
   else {
-    yield all(call(delay, 300))
+    yield call(delay, 1000)
   }
   
   yield put({type: CAN_START})

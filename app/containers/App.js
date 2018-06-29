@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {Route} from 'react-router'
+import {Route, withRouter} from 'react-router-dom'
 
 import * as actions from '../actions'
 
@@ -12,11 +12,23 @@ import Note from '../components/Note'
 import Notebooks from '../components/Notebooks'
 import Challenges from '../components/Challenges'
 import Settings from '../components/Settings'
+import moment from 'moment'
 
 import {AppContainer, Content, ContentContainer, Main} from '../styled/components'
 
-export default class AppView extends Component {
+class App extends Component {
   render() {
+    const {isLoading, start} = this.props.globals
+    if(isLoading) {
+      console.time()
+      console.warn('Mounted the loading state: ', +moment())
+      return <div>Loading</div>
+    }
+    else if(!start) {
+      console.warn('Mounted null: ', +moment())
+      return null
+    }
+    console.warn('Mounted the app: ', +moment())
     return <AppContainer>
       <AppBar />
       <Content>
@@ -44,4 +56,4 @@ const bindDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(bindStateToProps, bindDispatchToProps)(AppView)
+export default withRouter(connect(bindStateToProps, bindDispatchToProps)(App))

@@ -65,6 +65,6 @@ export default async function migrate() {
   for(let p of path) {
     const [from, to] = p.split(':')
     console.info(`>>> Applying migration from v${from} to v${to}`)
-    await migrations[p]()
+    await migrations[p].call()
   }
 }
