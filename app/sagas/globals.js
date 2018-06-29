@@ -3,11 +3,18 @@ import {delay} from 'redux-saga'
 import {STARTUP, CAN_START} from '../actions'
 import migrate from '../migrations'
 import moment from 'moment'
+import {willMigrate} from '../utils'
 
 export function* waitFor() {
-  console.log(+moment())
-  yield all([call(migrate), call(delay, 1500)])
-  console.log(+moment())
+  const willMigrate = yield call(willMigrate)
+  
+  if(willMigrate) {
+    yield all([call(migrate), call(delay, 1500)])  
+  }
+  else {
+    yield all(call(delay, 300))
+  }
+  
   yield put({type: CAN_START})
 }
 

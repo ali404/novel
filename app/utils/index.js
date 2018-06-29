@@ -1,6 +1,7 @@
 import electronStorage from 'electron-json-storage'
 import Promise from 'bluebird'
 import {EditorState, convertToRaw, convertFromRaw} from 'draft-js'
+import to from 'await-to-js'
 
 // count words on editor state
 export const countWordsOnEditorState = (editorState) => {
@@ -49,3 +50,11 @@ export function convertFrom(editorState) {
 }
 
 export const storage = Promise.promisifyAll(electronStorage)
+
+export async function willMigrate() {
+  const currentVersion = process.env.REACT_VERSION
+  const [__, meta] = await to(storage.getAsync('meta'))
+  const ownVersion = meta.version
+
+  return ownVersion !== currentVersion
+}

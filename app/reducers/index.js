@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import {combineReducers} from 'redux'
 
+import globals, {globalsPersist} from './globals'
 import notes, {notesPersist} from './notes'
 import notebooks, {notebooksPersist} from './notebooks'
 import notesMeta, {notesMetaPersist} from './notesMeta'
@@ -10,14 +11,16 @@ const reducers = {
   notes,
   notebooks,
   notesMeta,
-  settings
+  settings,
+  globals
 }
 
 const shouldPersist = {
   notes: notesPersist,
   notebooks: notebooksPersist,
   notesMeta: notesMetaPersist,
-  settings: settingsPersist
+  settings: settingsPersist,
+  globals: globalsPersist
 }
 
 export const persistedReducers = _.map(reducers, (reducer, id) => {
