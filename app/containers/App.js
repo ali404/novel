@@ -20,15 +20,15 @@ class App extends Component {
   render() {
     const {isLoading, start} = this.props.globals
     if(isLoading) {
-      console.time()
-      console.warn('Mounted the loading state: ', +moment())
+      console.info('Mounted the loading state: ', +moment())
       return <div>Loading</div>
     }
     else if(!start) {
       console.warn('Mounted null: ', +moment())
       return null
     }
-    console.warn('Mounted the app: ', +moment())
+
+    console.info('Mounted the app: ', +moment())
     return <AppContainer>
       <AppBar />
       <Content>
@@ -36,7 +36,6 @@ class App extends Component {
         <ContentContainer>
           <Route path="/notes" component={NotesBar} />
           <Main>
-            {/* <Route exact path="/notes/:id" component={InfoView} /> */}
             <Route exact path="/notes/:id" component={Note} />
             <Route exact path="/challenges" component={Challenges} />
             <Route exact path="/notebooks" component={Notebooks} />

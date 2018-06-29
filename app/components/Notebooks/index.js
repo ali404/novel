@@ -13,7 +13,7 @@ import {PageTitle} from '../../styled/components'
 import {NotebooksList} from './style'
 
 const Notebooks = ({notebooks, actions}) => {
-  const {defaultNotebook, ...allNotebooks} = notebooks
+  const {defaultNotebook, currentNotebook, ...allNotebooks} = notebooks
   let notebookCards = _.map(allNotebooks, (notebook, id) => {
     return <NotebookCard
       title={notebook.title}

@@ -1,20 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {NoteBarContainer} from './style'
 
+import NotebookSwitch from '../NotebookSwitch'
+import NoteAdder from '../NoteAdder'
 import NotesMenu from '../NotesMenu'
-import {NoteBarContainer, Notebook} from './style'
 
-const NotesBar = ({notebooks, notesMeta}) => (
-  <NoteBarContainer>
-    {/* <Notebook>{notebooks.default}</Notebook> */}
-    <Notebook>{notebooks[notebooks.defaultNotebook].title}</Notebook>
-    <NotesMenu />
-  </NoteBarContainer>
-)
-
-const bindStateToProps = state => ({
-  notesMeta: state.notesMeta,
-  notebooks: state.notebooks
-})
-
-export default connect(bindStateToProps, null)(NotesBar)
+export default class NotesBar extends React.Component {
+  render() {
+    return (
+      <NoteBarContainer>
+        <NotebookSwitch />
+        <NoteAdder />
+        <NotesMenu />
+      </NoteBarContainer>
+    )
+  }
+}
