@@ -5,27 +5,26 @@ import _ from 'lodash'
 export default async function v011v021() {
   // set default notebook for each notes
   let [__, notesMeta] = await to(storage.getAsync('notes'))
-
   notesMeta = _.map(notesMeta, (note, id) => {
     return {
       ...note,
       notebook: 'Inbox'
     }
   })
+  await storage.setAsync('notes', notesMeta)
 
-  const notesCount = _.size(notesMeta)
-
-  await to(storage.setAsync('notes', notesMeta))
-  
   const notebooks = {
     defaultNotebook: 'Inbox',
     'Inbox': {
       id: 'Inbox',
       title: 'Inbox',
       dateCreated: new Date(),
-      notesCount
+      notesCount: _.size(notesMeta)
     }
   }
-
-  await to(storage.setAsync('notebooks', notebooks))
+  await storage.setAsync('notebooks', notebooks)
+  
+  let [___, meta] = await to(storage.getAsync('meta'))
+  meta.version = '0.2.1'
+  await storage.setAsync('meta', meta)
 }

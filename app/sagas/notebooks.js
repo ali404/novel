@@ -4,7 +4,7 @@ import api from '../utils/api'
 import {
   ADD_NOTEBOOK, SET_DEFAULT_NOTEBOOK, RENAME_NOTEBOOK
 } from '../actions'
-import {validNotebooks} from '../utils/api/hydration'
+import {validNotebooks} from '../utils/hydration'
 
 export function* createNotebook({payload: {id, title}}) {
   yield call(api.notebooks.save, {id, title})
@@ -43,7 +43,7 @@ export function* hydrateNotebooksReducer() {
 
 export default function* rootSaga() {
   yield all([
-    takeLatest(STARTUP, hydrateNotebooksReducer),
+    // takeLatest(STARTUP, hydrateNotebooksReducer),
     takeLatest(ADD_NOTEBOOK, createNotebook),
     takeLatest(SET_DEFAULT_NOTEBOOK, setDefaultNotebook),
     takeLatest(RENAME_NOTEBOOK, renameNotebook)

@@ -54,9 +54,15 @@ export default async function migrate() {
   const currentVersion = process.env.REACT_VERSION
   const [_, meta] = await to(storage.getAsync('meta'))
   const ownVersion = meta.version
-
-  const path = findPath(migrations, currentVersion, ownVersion)
+  
+  const path = findPath(migrations, ownVersion, currentVersion)
+  if(path.length === 0) {
+    console.info("No migrations needed. Version found and current are same")
+  }
+  
   for(let p of path) {
+    const [from, to] = p.split(':')
+    console.info(`>>> Applying migration from v${from} to v${to}`)
     await migrations[p]()
   }
 }

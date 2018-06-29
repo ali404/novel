@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { createMemoryHistory } from 'history';
 
 import App from './containers/App'
-import {LOAD_NOTES_META} from './actions'
+import {LOAD_NOTES_META, STARTUP} from './actions'
 
 import configureStore from './store';
 
@@ -24,6 +24,7 @@ const store = configureStore(initialState, routerHistory)
 syncHistoryWithStore(store, routerHistory)
 
 store.dispatch({type: LOAD_NOTES_META})
+store.dispatch({type: STARTUP})
 
 const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'))
 

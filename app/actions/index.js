@@ -1,6 +1,8 @@
 import v4 from 'uuid/v4'
 
-export const STARTUP = 'app/start'
+export const STARTUP = 'app/request-start'
+export const CAN_START = 'app/start'
+
 export const CREATE_NOTE = 'note/create'
 export const createNote = () => ({
   type: CREATE_NOTE,
