@@ -21,8 +21,6 @@ class NotesMenu extends React.Component {
       return note.notebook === id
     })
 
-    console.log(notes)
-
     return (
       <NotesMenuStyle>
         <NoteList notes={notes} location={this.props.location} />

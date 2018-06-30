@@ -9,6 +9,7 @@ import * as actions from '../actions'
 import MenuBar from '../components/MenuBar'
 import NotesBar from '../components/NotesBar'
 import Note from '../components/Note'
+import DeleteNote from '../components/DeleteNote'
 import Notebooks from '../components/Notebooks'
 import Challenges from '../components/Challenges'
 import Settings from '../components/Settings'
@@ -36,7 +37,8 @@ class App extends Component {
         <ContentContainer>
           <Route path="/notes" component={NotesBar} />
           <Main>
-            <Route exact path="/notes/:id" component={Note} />
+            <Route path="/notes/:id" component={Note} />
+            <Route exact path="/notes/:id/delete" component={DeleteNote} />
             <Route exact path="/challenges" component={Challenges} />
             <Route exact path="/notebooks" component={Notebooks} />
             <Route exact path="/settings" component={Settings} />

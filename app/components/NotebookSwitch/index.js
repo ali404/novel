@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 import * as actions from '../../actions'
-import {Notebook} from './style'
+import {Notebook, NotebookSelect, NotebookOption} from './style'
 import _ from 'lodash'
 
 class NotebookSwitch extends React.Component {
@@ -19,12 +19,12 @@ class NotebookSwitch extends React.Component {
   render() {
     const {defaultNotebook, currentNotebook, ...notebooks} = this.props.notebooks
     const options = _.map(notebooks, (notebook, id) => {
-      return <option key={id} value={notebook.id}>{notebook.title}</option>
+      return <NotebookOption key={id} value={notebook.id}>{notebook.title}</NotebookOption>
     })
 
-    return <select value={currentNotebook} onChange={this._handleChange}>
+    return <NotebookSelect value={currentNotebook} onChange={this._handleChange}>
       {options}
-    </select>
+    </NotebookSelect>
   }
 }
 
