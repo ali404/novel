@@ -9,15 +9,15 @@ import {LOAD_NOTES_META, STARTUP, LOAD_NOTEBOOKS} from './actions'
 
 import configureStore from './store';
 
-// if (process.env.NODE_ENV !== 'production') {
-//   const {whyDidYouUpdate} = require('why-did-you-update');
-//   whyDidYouUpdate(React, {
-//     exclude: [
-//       // React Router
-//       /^Route/,
-//     ]
-//   })
-// }
+if (process.env.NODE_ENV !== 'production') {
+  const {whyDidYouUpdate} = require('why-did-you-update');
+  whyDidYouUpdate(React, {
+    exclude: [
+      // React Router
+      /^Route/,
+    ]
+  })
+}
 
 
 const syncHistoryWithStore = (store, history) => {

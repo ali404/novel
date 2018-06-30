@@ -9,7 +9,6 @@ export function* waitFor() {
   const diffVersions = yield call(willMigrate)
   
   if(diffVersions) {
-    console.warn(1)
     yield all([call(migrate), call(delay, 1500)])  
   }
   else {

@@ -10,7 +10,19 @@ class NoteListItem extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    dateCreated: PropTypes.string.isRequired
+    dateCreated: PropTypes.string.isRequired,
+    pathname: PropTypes.string
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if(this.props.title !== nextProps.title) return true
+    
+    const a = this.props.pathname.split('/')
+    const id = a[2]
+    const b = nextProps.pathname.split('/')
+    const newId = b[2]
+
+    return (this.props.id === id || this.props.id === newId) && id !== newId
   }
 
   render() {
@@ -34,12 +46,14 @@ export default class NoteList extends Component {
   }
 
   render() {
+    console.log(this.props.location)
     const notes = _.map(this.props.notes, (note, id) => {
       return <NoteListItem
         key={note.id}
         id={note.id}
         title={note.title}
         dateCreated={moment(note.dateCreated).format('Do of MMMM')}
+        pathname={this.props.location.pathname}
       />
     })
 

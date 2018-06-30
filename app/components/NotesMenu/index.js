@@ -23,7 +23,7 @@ class NotesMenu extends React.Component {
 
     return (
       <NotesMenuStyle>
-        <NoteList notes={notes} />
+        <NoteList notes={notes} location={this.props.location} />
       </NotesMenuStyle>
     )
   }

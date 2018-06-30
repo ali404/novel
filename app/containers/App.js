@@ -2,26 +2,27 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Route, withRouter} from 'react-router-dom'
+import {CSSTransition} from 'react-transition-group'
 
 import * as actions from '../actions'
 
-import AppBar from '../components/AppBar'
 import MenuBar from '../components/MenuBar'
 import NotesBar from '../components/NotesBar'
 import Note from '../components/Note'
 import Notebooks from '../components/Notebooks'
 import Challenges from '../components/Challenges'
 import Settings from '../components/Settings'
+import LoadingState from './LoadingState'
 import moment from 'moment'
 
-import {AppContainer, Content, ContentContainer, Main} from '../styled/components'
+import {Content, ContentContainer, Main} from '../styled/components'
 
 class App extends Component {
   render() {
     const {isLoading, start} = this.props.globals
     if(isLoading) {
       console.info('Mounted the loading state: ', +moment())
-      return <div>Loading</div>
+      return <LoadingState delay={1500} />
     }
     else if(!start) {
       console.warn('Mounted null: ', +moment())
@@ -29,8 +30,7 @@ class App extends Component {
     }
 
     console.info('Mounted the app: ', +moment())
-    return <AppContainer>
-      <AppBar />
+    return <CSSTransition timeout={500} classNames="fade">
       <Content>
         <MenuBar />
         <ContentContainer>
@@ -43,7 +43,7 @@ class App extends Component {
           </Main>
         </ContentContainer>
       </Content>
-    </AppContainer>
+    </CSSTransition>
   }
 }
 

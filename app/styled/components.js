@@ -1,17 +1,6 @@
 import styled from 'styled-components'
 import {colors} from './constants'
 
-export const AppContainer = styled.div`
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
-`
-
 export const Content = styled.div`
   display: flex;
   align-items: row;
