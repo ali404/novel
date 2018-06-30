@@ -9,6 +9,7 @@ const migrations = {
   'v011:v021': v011v021,
   'v021:v022': v021v022,
   'v022:v023': noOp('0.2.3'),
+  'v023:v024': noOp('0.2.4')
 }
 
 export function dfs(graph, start, end, visited = {}) {
