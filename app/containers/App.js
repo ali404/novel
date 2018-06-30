@@ -31,7 +31,7 @@ class App extends Component {
 
     console.info('Mounted the app: ', +moment())
     return <CSSTransition timeout={500} classNames="fade">
-      <Content>
+      <React.Fragment>
         <MenuBar />
         <ContentContainer>
           <Route path="/notes" component={NotesBar} />
@@ -42,7 +42,7 @@ class App extends Component {
             <Route exact path="/settings" component={Settings} />
           </Main>
         </ContentContainer>
-      </Content>
+      </React.Fragment>
     </CSSTransition>
   }
 }
