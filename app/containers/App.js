@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Route, withRouter} from 'react-router-dom'
-import {CSSTransition} from 'react-transition-group'
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 import * as actions from '../actions'
 
@@ -21,18 +21,19 @@ import {Content, ContentContainer, Main} from '../styled/components'
 class App extends Component {
   render() {
     const {isLoading, start, delay} = this.props.globals
+    let returned 
+    
     if(isLoading && delay) {
-      console.info('Mounted the loading state: ', +moment())
-      return <LoadingState delay={delay} />
+      // console.info('Mounted the loading state: ', +moment())
+      returned = <LoadingState delay={delay} />
     }
     else if(!start) {
-      console.warn('Mounted null: ', +moment())
+      // console.warn('Mounted null: ', +moment())
       return null
     }
-
-    console.info('Mounted the app: ', +moment())
-    return <CSSTransition timeout={500} classNames="fade">
-      <React.Fragment>
+    else {
+      // console.info('Mounted the app: ', +moment())
+      returned = <React.Fragment>
         <MenuBar />
         <ContentContainer>
           <Route path="/notes" component={NotesBar} />
@@ -45,7 +46,18 @@ class App extends Component {
           </Main>
         </ContentContainer>
       </React.Fragment>
-    </CSSTransition>
+    }
+
+    return <TransitionGroup component={null}>
+      <CSSTransition
+        in
+        timeout={500}
+        classNames="fade"
+        appear={true}
+        unmountOnExit={true}>
+        {returned}
+      </CSSTransition>
+    </TransitionGroup>
   }
 }
 

@@ -81,7 +81,9 @@ app.on('ready', async () => {
       });
 
       app.on('activate', () => {
-        mainWindow.show();
+        // setTimeout(() => {
+          mainWindow.show();
+        // }, 40)
       });
 
       app.on('before-quit', () => {

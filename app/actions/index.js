@@ -62,6 +62,7 @@ export const loadNotebooks = () => ({
   type: LOAD_NOTEBOOKS
 })
 export const SET_NOTEBOOKS = 'notebooks/set'
+export const CHANGE_NOTES_COUNT = 'notebooks/change-notes-count'
 
 export const TOGGLE_MENU = 'menu/toggle'
 export const TOGGLE_NOTE_BAR = 'note-bar/toggle'

@@ -1,14 +1,22 @@
-import {takeLatest, all, call, put, fork} from 'redux-saga/effects'
+import {takeLatest, all, call, put, fork, select} from 'redux-saga/effects'
 import {delay} from 'redux-saga'
 import api from '../utils/api'
 import * as utils from '../utils'
 import {
   CREATE_NOTE, UPDATE_NOTE_TITLE, UPDATE_NOTE_STATE, DELETE_NOTE,
-  LOAD_NOTE, LOAD_NOTES_META, SET_NOTE, SET_NOTES_META
+  LOAD_NOTE, LOAD_NOTES_META, SET_NOTE, SET_NOTES_META,
+  CHANGE_NOTES_COUNT
 } from '../actions'
 
 export function* createNote({payload: {id, dateCreated, notebook}}) {
   yield call(api.notes.create, {id, dateCreated, notebook})
+  yield put({
+    type: CHANGE_NOTES_COUNT,
+    payload: {
+      id: notebook,
+      count: 1
+    }
+  })
 }
 
 export function* saveEditorState({payload: {id, editorState}}) {
@@ -52,7 +60,20 @@ export function* loadMeta() {
 }
 
 export function* deleteNote({payload: {id}}) {
+  // get from localstorage as the reducer might've fired
+  // too lazy to create another action type to delete the note 
+  // in the reducer
+  const notesMeta = yield call(api.notes.getMeta)
+  const notebook = notesMeta[id].notebook
   yield call(api.notes.del, {id})
+  
+  yield put({
+    type: CHANGE_NOTES_COUNT,
+    payload: {
+      id: notebook,
+      count: -1
+    }
+  })
 }
 
 export default function* rootSaga() {
@@ -62,6 +83,6 @@ export default function* rootSaga() {
     takeLatest(UPDATE_NOTE_STATE, saveEditorState),
     takeLatest(LOAD_NOTE, load),
     takeLatest(LOAD_NOTES_META, loadMeta),
-    takeLatest(DELETE_NOTE, deleteNote)
+    takeLatest(DELETE_NOTE, deleteNote),
   ])
 }

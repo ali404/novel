@@ -19,7 +19,7 @@ const Bar = styled.div`
   height: 6pt;
   background-color: #fafafa;
   width: 0%;
-  transition: ${props => `width ${props.delay / 1000}s`};
+  transition: ${props => `width ${props.delay / 1120}s`};
   transition-timing-function: cubic-bezier(.33,.16,.67,.14);
 `
 

@@ -14,10 +14,10 @@ export function* waitFor() {
   })
 
   if(diffVersions) {
-    yield all([call(migrate), call(delay, 1500)])  
+    yield all([call(migrate), call(delay, delayTime)])  
   }
   else {
-    yield call(delay, 1000)
+    yield call(delay, delayTime)
   }
   
   yield put({type: CAN_START})

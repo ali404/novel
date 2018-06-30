@@ -1,6 +1,7 @@
 import {
   ADD_NOTEBOOK, SET_DEFAULT_NOTEBOOK, SET_NOTEBOOKS,
-  SET_CURRENT_NOTEBOOK, CREATE_NOTE, DELETE_NOTE
+  SET_CURRENT_NOTEBOOK, CREATE_NOTE, DELETE_NOTE,
+  CHANGE_NOTES_COUNT
 } from '../actions'
 
 const defaultState = {
@@ -35,6 +36,15 @@ export default function notebooksReducer(state = defaultState, {type, payload}) 
         }
       }
     
+    case CHANGE_NOTES_COUNT:
+      return {
+        ...state,
+        [payload.id]: {
+          ...state[payload.id],
+          notesCount: state[payload.id].notesCount + payload.count
+        }
+      }
+    
     case SET_DEFAULT_NOTEBOOK:
       return {
         ...state,
@@ -45,15 +55,6 @@ export default function notebooksReducer(state = defaultState, {type, payload}) 
       return {
         ...state,
         currentNotebook: payload.id
-      }
-    
-    case CREATE_NOTE:
-      return {
-        ...state,
-        [payload.notebook]: {
-          ...state[payload.notebook],
-          notesCount: state[payload.notebook].notesCount + 1
-        }
       }
     
     default:

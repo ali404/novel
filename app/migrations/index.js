@@ -1,12 +1,14 @@
 import v011v021 from './v011v021'
 import v021v022 from './v021v022'
+import noOp from './no-op'
 import storage from 'electron-json-storage'
 import to from 'await-to-js'
 import _ from 'lodash'
 
 const migrations = {
   'v011:v021': v011v021,
-  'v021:v022': v021v022
+  'v021:v022': v021v022,
+  'v022:v023': noOp('0.2.3'),
 }
 
 export function dfs(graph, start, end, visited = {}) {
