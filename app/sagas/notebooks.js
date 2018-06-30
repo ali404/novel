@@ -1,7 +1,8 @@
-import {takeLatest, all, call, select, put} from 'redux-saga/effects'
+import {takeLatest, takeEvery, all, call, select, put} from 'redux-saga/effects'
 import {delay} from 'redux-saga'
 import api from '../utils/api'
 import {
+  CREATE_NOTE,
   ADD_NOTEBOOK, SET_DEFAULT_NOTEBOOK, RENAME_NOTEBOOK, 
   SET_NOTEBOOKS, LOAD_NOTEBOOKS
 } from '../actions'
@@ -17,6 +18,10 @@ export function* setDefaultNotebook({payload: {id}}) {
 
 export function* renameNotebook({payload: {id, title}}) {
   yield call(api.notebooks.rename, {id, title})
+}
+
+export function* incrementNotesCount({payload: {notebook, ...rest}}) {
+  yield call(api.notebooks.incrementNotes, {id: notebook})
 }
 
 export function* loadNotebooks() {
@@ -54,6 +59,7 @@ export function* hydrateNotebooksReducer() {
 export default function* rootSaga() {
   yield all([
     // takeLatest(STARTUP, hydrateNotebooksReducer),
+    takeEvery(CREATE_NOTE, incrementNotesCount),
     takeLatest(LOAD_NOTEBOOKS, loadNotebooks),
     takeLatest(ADD_NOTEBOOK, createNotebook),
     takeLatest(SET_DEFAULT_NOTEBOOK, setDefaultNotebook),

@@ -1,13 +1,14 @@
 import {storage} from '../index'
 import to from 'await-to-js'
 
-export async function create({id, dateCreated}) {
+export async function create({id, dateCreated, notebook}) {
   const [err, notes] = await to(storage.getAsync('notes'))
   if(err) throw err
   
   notes[id] = {
     id,
     dateCreated,
+    notebook,
     title: ''
   }
 

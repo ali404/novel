@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
 import styled from 'styled-components'
 
 import ProgressBar from '../styled/ProgressBar'
@@ -27,29 +25,13 @@ class LoadingState extends React.Component {
   static propTypes = {
     delay: PropTypes.number.isRequired
   }
-  
-  state = {
-    progress: 0
-  }
-
-  componenWillMount() {
-    // set the timer
-  }
-
-  componentWillUnmount() {
-    // delete the timer
-  }
 
   render() {
     return <LoadingStateContainer>
       <LoadingStateTitle>Novel</LoadingStateTitle>
-      <ProgressBar delay={1500} />
+      <ProgressBar delay={this.props.delay} />
     </LoadingStateContainer>
   }
 }
 
-const bindStateToProps = state => ({
-  globals: state.globals
-})
-
-export default connect(bindStateToProps)(LoadingState)
+export default LoadingState

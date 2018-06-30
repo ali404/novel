@@ -19,10 +19,10 @@ import {Content, ContentContainer, Main} from '../styled/components'
 
 class App extends Component {
   render() {
-    const {isLoading, start} = this.props.globals
-    if(isLoading) {
+    const {isLoading, start, delay} = this.props.globals
+    if(isLoading && delay) {
       console.info('Mounted the loading state: ', +moment())
-      return <LoadingState delay={1500} />
+      return <LoadingState delay={delay} />
     }
     else if(!start) {
       console.warn('Mounted null: ', +moment())

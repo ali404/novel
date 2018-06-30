@@ -7,8 +7,8 @@ import {
   LOAD_NOTE, LOAD_NOTES_META, SET_NOTE, SET_NOTES_META
 } from '../actions'
 
-export function* createNote({payload: {id, dateCreated}}) {
-  yield call(api.notes.create, {id, dateCreated})
+export function* createNote({payload: {id, dateCreated, notebook}}) {
+  yield call(api.notes.create, {id, dateCreated, notebook})
 }
 
 export function* saveEditorState({payload: {id, editorState}}) {

@@ -32,7 +32,7 @@ class NoteListItem extends Component {
       activeClassName="active"
     >
       <MenuItem>
-        <Title>{this.props.title}</Title>
+        <Title>{this.props.title || 'Untitled'}</Title>
         <DateTitle>created on {this.props.dateCreated}</DateTitle>
       </MenuItem>
     </NavLink>
@@ -59,7 +59,6 @@ export default class NoteList extends Component {
       ))
       .value()
     
-    console.log(notes)
     return <div>{notes}</div>
   }
 }

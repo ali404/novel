@@ -17,9 +17,11 @@ class NotesMenu extends React.Component {
     const {notebooks, notesMeta} = this.props
     const id = notebooks.currentNotebook || 
       notebooks.defaultNotebook
-    const notes = _.filter(notesMeta, (note, id) => {
-      return note.notebook !== id
+    const notes = _.filter(notesMeta, (note, __) => {
+      return note.notebook === id
     })
+
+    console.log(notes)
 
     return (
       <NotesMenuStyle>

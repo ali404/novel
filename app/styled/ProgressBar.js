@@ -35,8 +35,7 @@ export default class ProgressBar extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({animate: true})
-      this.forceUpdate()
-    }, 10)
+    }, 0)
   }
 
   render() {

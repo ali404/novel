@@ -1,6 +1,6 @@
 import {
   ADD_NOTEBOOK, SET_DEFAULT_NOTEBOOK, SET_NOTEBOOKS,
-  SET_CURRENT_NOTEBOOK
+  SET_CURRENT_NOTEBOOK, CREATE_NOTE
 } from '../actions'
 
 const defaultState = {
@@ -45,6 +45,15 @@ export default function notebooksReducer(state = defaultState, {type, payload}) 
       return {
         ...state,
         currentNotebook: payload.id
+      }
+    
+    case CREATE_NOTE:
+      return {
+        ...state,
+        [payload.notebook]: {
+          ...state[payload.notebook],
+          notesCount: state[payload.notebook].notesCount + 1
+        }
       }
     
     default:

@@ -2,13 +2,15 @@ import v4 from 'uuid/v4'
 
 export const STARTUP = 'app/request-start'
 export const CAN_START = 'app/start'
+export const START_DELAY_NOTIF = 'app/start-delay-notification'
 
 export const CREATE_NOTE = 'note/create'
-export const createNote = () => ({
+export const createNote = (notebook) => ({
   type: CREATE_NOTE,
   payload: {
     id: v4(),
-    dateCreated: new Date()
+    dateCreated: new Date(),
+    notebook
   }
 })
 
@@ -49,6 +51,11 @@ export const addNotebook = title => ({
 })
 export const RENAME_NOTEBOOK = 'notebook/rename'
 export const SET_DEFAULT_NOTEBOOK = 'notebook/set-default'
+export const SET_CURRENT_NOTEBOOK = 'notebook/set-current'
+export const setCurrentNotebook = id => ({
+  type: SET_CURRENT_NOTEBOOK,
+  payload: {id}
+})
 
 export const LOAD_NOTEBOOKS = 'notebooks/load'
 export const loadNotebooks = () => ({
