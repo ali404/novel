@@ -19,7 +19,7 @@ export function* createNote({payload: {id, dateCreated, notebook}}) {
   })
 }
 
-export function* saveEditorState({payload: {id, editorState}}) {
+export function* saveEditorState({payload: {id, state: editorState}}) {
   yield call(delay, 1000)
 
   const state = yield call(utils.convertTo, editorState)

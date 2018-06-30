@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import {
-  SET_NOTE, CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE
+  SET_NOTE, CREATE_NOTE, UPDATE_NOTE_STATE, DELETE_NOTE
 } from '../actions'
 
 export const notesPersist = false
@@ -23,7 +23,7 @@ export default function notesReducer(state = {}, {type, payload}) {
         }
       }
     
-    case UPDATE_NOTE:
+    case UPDATE_NOTE_STATE:
       return {
         ...state,
         [payload.id]: {

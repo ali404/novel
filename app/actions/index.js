@@ -22,7 +22,7 @@ export const updateNoteTitle = (id, title) => ({
 export const UPDATE_NOTE_STATE = 'note/update-state'
 export const updateNoteState = (id, editorState) => ({
   type: UPDATE_NOTE_STATE,
-  payload: {id, editorState}
+  payload: {id, state: editorState}
 })
 export const DELETE_NOTE = 'note/delete'
 export const deleteNote = (id) => ({

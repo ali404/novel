@@ -7,20 +7,27 @@ import * as actions from '../../actions'
 
 class NoteEditor extends Component {
   state = {
-    editorState: null
+    editorState: this._reconcileEditorState(this.props)
   }
 
   constructor(props) {
     super(props)
-    this._reconcileEditorState(props)
+    this.state = {
+      editorState: this._reconcileEditorState(props)
+    }
   }
 
   componentWillMount() {
-    this.props.actions.loadNote(this.props.id)
+    console.log(!this.props.notes[this.props.id])
+    if(!this.props.notes[this.props.id]) {
+      this.props.actions.loadNote(this.props.id)
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    this._reconcileEditorState(nextProps)
+    this.setState({
+      editorState: this._reconcileEditorState(nextProps)
+    })
   }
 
   _reconcileEditorState(props) {
@@ -29,9 +36,7 @@ class NoteEditor extends Component {
       && props.notes[props.id] 
       && props.notes[props.id].state
     ) {
-      this.setState({
-        editorState: props.notes[props.id].state
-      })
+      return props.notes[props.id].state
     }
   }
 
