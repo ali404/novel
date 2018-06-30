@@ -46,17 +46,20 @@ export default class NoteList extends Component {
   }
 
   render() {
-    console.log(this.props.location)
-    const notes = _.map(this.props.notes, (note, id) => {
-      return <NoteListItem
-        key={note.id}
-        id={note.id}
-        title={note.title}
-        dateCreated={moment(note.dateCreated).format('Do of MMMM')}
-        pathname={this.props.location.pathname}
-      />
-    })
-
+    const notes = _(this.props.notes)
+      .sortBy(notes => -moment(notes.dateCreated))
+      .map((note, id) => (
+        <NoteListItem
+          key={note.id}
+          id={note.id}
+          title={note.title}
+          dateCreated={moment(note.dateCreated).format('Do of MMMM')}
+          pathname={this.props.location.pathname}
+        />
+      ))
+      .value()
+    
+    console.log(notes)
     return <div>{notes}</div>
   }
 }
