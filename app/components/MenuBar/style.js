@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import {NavLink} from 'react-router-dom'
 
 export const MenuContainer = styled.div`
-  display: flex;
-  width: 60px;
+  display: ${props => props.open ? 'flex' : 'none'};
+  flex: 0 0 60px;
   background-color: #141414;
 `
 

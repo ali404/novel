@@ -7,6 +7,8 @@ export const NoteBarContainer = styled.div`
   margin: 30px 0;
   padding: 0px 20px;
   border-right: 1px solid #2D2D2D;
+
+  display: ${props => props.open ? 'block' : 'none'}
 `
 
 export const Notebook = styled.div`

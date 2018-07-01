@@ -65,4 +65,10 @@ export const SET_NOTEBOOKS = 'notebooks/set'
 export const CHANGE_NOTES_COUNT = 'notebooks/change-notes-count'
 
 export const TOGGLE_MENU = 'menu/toggle'
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU
+})
 export const TOGGLE_NOTE_BAR = 'note-bar/toggle'
+export const toggleNoteBar = () => ({
+  type: TOGGLE_NOTE_BAR
+})
