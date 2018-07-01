@@ -41,7 +41,6 @@ class MenuBar extends React.Component {
   }
 
   render() {
-    console.log(this.props.settings.menu.open)
     return <MenuContainer open={this.props.settings.menu.open}>
       <MenuList>
         <MenuListItem>

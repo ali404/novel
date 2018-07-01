@@ -18,7 +18,6 @@ class NoteEditor extends Component {
   }
 
   componentWillMount() {
-    console.log(!this.props.notes[this.props.id])
     if(!this.props.notes[this.props.id]) {
       this.props.actions.loadNote(this.props.id)
     }
